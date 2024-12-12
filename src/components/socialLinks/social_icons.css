@@ -1,0 +1,61 @@
+.social-links {
+  display: flex;
+  gap: 10px; /* Space between icons */
+  margin-right: 20px;
+}
+
+.social-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  color: white;
+  height: 30px; /* Smaller size for the icons */
+  border-radius: 7px !important; /* Adjusted for smaller icons */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  font-size: 1.2rem; /* Smaller icon size */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+  text-decoration: none;
+  }
+
+.youtube {
+  background-color: red;
+}
+.facebook{
+  background-color: blue;
+ 
+}
+.instagram{
+  background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4);
+}
+.linkedin{
+  background: rgb(11, 134, 202);
+}
+.twitter {
+background: black;
+}
+/* Hover Effects */
+/* .social-icon:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.facebook:hover {
+  background: linear-gradient(145deg, #3b5998, #4a69bd);
+}
+
+.instagram:hover {
+  background: linear-gradient(145deg, #e4405f, #ff6a95);
+}
+
+.linkedin:hover {
+  background: linear-gradient(145deg, #0077b5, #0095c7);
+}
+
+.youtube:hover {
+  background: linear-gradient(145deg, #ff0000, #e52d27);
+}
+
+.twitter:hover {
+  background: linear-gradient(145deg, #0d95e8, #1da1f2);
+} */
