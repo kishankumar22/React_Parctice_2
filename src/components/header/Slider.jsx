@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import pic1 from "../../assets/images/pic1.png"; 
-import pic2 from "../../assets/images/pic2.png"; 
-import pic3 from "../../assets/images/pic3.png"; 
-import pic4 from "../../assets/images/pic4.png"; 
-import pic5 from "../../assets/images/pic5.png"; 
+import React, { useState, useEffect } from 'react';
+import pic1 from "../../assets/images/pic1.png";
+import pic2 from "../../assets/images/pic2.png";
+import pic3 from "../../assets/images/pic3.png";
+import pic4 from "../../assets/images/pic4.png";
+import pic5 from "../../assets/images/pic5.png";
 
 const Slider = () => {
   // Array of images and corresponding messages
@@ -16,6 +16,14 @@ const Slider = () => {
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Automatically slide images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      nextImage();
+    }, 3000); // Change slide every 3 seconds
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   // Next image handler
   const nextImage = () => {
@@ -31,7 +39,7 @@ const Slider = () => {
     <div className="relative w-full mx-auto overflow-hidden">
       {/* Slider Container */}
       <div
-        className="flex transition-transform duration-700 ease-in-out"
+        className="flex transition-transform duration-1000 ease-out delay-500"
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
         }}
@@ -39,7 +47,7 @@ const Slider = () => {
         {slides.map((slide, index) => (
           <div
             key={index}
-            className="min-w-full flex-shrink-0 text-center"
+            className="min-w-full text-center"
           >
             {/* Image */}
             <img
@@ -48,7 +56,7 @@ const Slider = () => {
               className="w-full h-[464px] object-cover rounded-lg"
             />
             {/* Slide Message */}
-            <div className="bg-red-900 p-4 shadow-md text-center">
+            <div className="bg-red-800 p-3 shadow-md text-center">
               <p className="text-white">{slide.message}</p>
             </div>
           </div>
@@ -58,7 +66,7 @@ const Slider = () => {
       {/* Left Arrow */}
       <button
         onClick={prevImage}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black rounded-full p-2 opacity-50 hover:opacity-100 transition-opacity"
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black rounded-full p-2 opacity-50 hover:opacity-100 transition-opacity "
       >
         &lt;
       </button>

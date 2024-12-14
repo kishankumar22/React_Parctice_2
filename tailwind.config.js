@@ -2,11 +2,28 @@
 export const content = [
   "./src/**/*.{js,jsx,ts,tsx}", // Include all source files
 ];
+
 export const theme = {
   extend: {
     colors: {
-      'regal-blue': '#3f51b5'
+      'regal-blue': '#3f51b5',
+      'yellow': '#ecd8a2',
+      'kesariya': '#b75906',
+      'links_colors': '#ececec',
     },
-  }, // Extend the default theme as needed
+    height:{
+      'heightsec':'500px',
+    },
+    animation: {
+      marquee: "marquee 10s linear infinite",
+    },
+    keyframes: {
+      marquee: {
+        '0%': { transform: 'translateY(100%)' },
+        '100%': { transform: 'translateY(-100%)' },
+      },
+    },
+  },
 };
+
 export const plugins = [];
