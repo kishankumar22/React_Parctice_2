@@ -6,7 +6,7 @@ import AcademicsPage from './pages/AcademicsPage';
 import AdmissionsPage from './pages/AdmissionsPage';
 import ContactPage from './pages/ContactPage';
 import Header from './components/header/Navbar';
-import Footer from './components/Footer/Footer';
+import Footer from './components/footer/Footer';
 
 function App() {
   return (

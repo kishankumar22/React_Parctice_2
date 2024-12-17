@@ -2,30 +2,56 @@ import React, { useState, useRef, useEffect } from "react";
 import { FaRegArrowAltCircleRight, FaPlay, FaPause } from "react-icons/fa";
 
 const NotificationCircular = () => {
-  const [isScrolling, setIsScrolling] = useState(true);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const [currentNotificationIndex, setCurrentNotificationIndex] = useState(0);
   const scrollRef = useRef(null);
-  const [scrollPosition, setScrollPosition] = useState(0);
   const notificationsJSX = [];
 
   const notifications = [
     {
-      title:
-        "विश्वविद्यालय एवं सम्बद्ध पूरित करने हेतु तिथि को 13/12/2024 तक विस्तारित किये जाने के सम्बन्ध में।",
-      size: "149 KB",
+      title: "विकसित भारत युवा नेता संवाद (क्विज चैलेंज) में अधिक से अधिक युवाओं को सहभागिता कराए जाने के सम्बंध में।",
+      size: "155 KB",
       language: "Hindi",
       type: "General",
-      dateUploaded: "29-Nov-2024",
+      dateUploaded: "19-Nov-2024",
     },
     {
-      title: "बी0ए0जे0एम0सी0 पंचम सेमेस्टर की परीक्षाओं हेतु समय-सारणी। ",
+      title: "विकसित भारत युवा नेता संवाद (क्विज चैलेंज) में अधिक से अधिक युवाओं को सहभागिता कराए जाने के सम्बंध में।",
+      size: "139 KB",
+      language: "Hindi",
+      type: "General",
+      dateUploaded: "22-Nov-2024",
+    },
+    {
+      title: "एल-एल0बी0, बी0ए0एल-एल0बी0 विषम सेमेस्टर के अर्ह छात्रों की परीक्षाओं हेतु समय-सारणी",
       size: "288 KB",
       language: "Hindi",
       type: "General",
       dateUploaded: "29-Nov-2024",
     },
     {
-      title:
-        "शैक्षणिक सत्र 2024-25 हेतु विश्वविद्यालय ",
+      title: "एल-एल0बी0, बी0ए0एल-एल0बी0 विषम सेमेस्टर के अर्ह छात्रों की परीक्षाओं हेतु समय-सारणीबी0टेक0 -सारणी।",
+      size: "288 KB",
+      language: "Hindi",
+      type: "General",
+      dateUploaded: "29-Nov-2024",
+    },
+    {
+      title: "विश्वविद्यालय एवं सम्बद्ध महाविद्यालयों के सत्र 2024-25 के विषम सेमेस्टर स्नातक/ स्नातकोत्तर कक्षाओं ध में।",
+      size: "288 KB",
+      language: "Hindi",
+      type: "General",
+      dateUploaded: "29-Nov-2024",
+    },
+    {
+      title: "Notification 6",
+      size: "288 KB",
+      language: "Hindi",
+      type: "General",
+      dateUploaded: "29-Nov-2024",
+    },
+    {
+      title: "एल-एल0बी0, बी0ए0एल-एल0बी0 विषम सेमेस्टर के अर्ह छात्रों की परीक्षाओं हेतु समय-सारणी",
       size: "288 KB",
       language: "Hindi",
       type: "General",
@@ -33,24 +59,18 @@ const NotificationCircular = () => {
     },
   ];
 
+  // Create JSX for the notifications to render
   notifications.forEach((notification, index) => {
     notificationsJSX.push(
-      <div
-        key={index}
-        className="bg-yellow shadow-lg border-yellow-500 hover:shadow-xl transition-shadow rounded-md mb-4"
-      >
-        <div className="text-gray-600 px-11 text-sm sm:text-base font-medium mb-1">
+      <div key={index} className="border-yellow-500 transition-shadow rounded mb-4 p-2">
+        <div className="text-black px-12 text-sm sm:text-xs font-medium">
           Date uploaded: {notification.dateUploaded}
         </div>
-
-        <div className="flex items-start px-4 ">
-          <FaRegArrowAltCircleRight className="w-5 h-5 sm:w-6 sm:h-6 text-yellow-800 mr-2" />
-          <h6 className="text-sm sm:text-base lg:text-lg font-semibold text-red-600">
-            {notification.title}
-          </h6>
+        <div className="flex items-start px-4 -mb-2 ">
+          <FaRegArrowAltCircleRight className="w-5 h-5 sm:w-6 sm:h-6 text-white mr-2" />
+          <h1 className="text-sm font-bold sm:text-xs lg:text-sm text-kesariya">{notification.title}</h1>
         </div>
-
-        <ul className="text-xs px-12 mt-2 sm:text-sm text-gray-700 flex flex-wrap gap-2 pb-2">
+        <ul className="text-xs px-12 mt-2 sm:text-xs text-gray-500 flex flex-wrap gap-2 pb-1">
           <li>
             <b>Size:</b> {notification.size} |
           </li>
@@ -61,64 +81,79 @@ const NotificationCircular = () => {
             <b>Type:</b> {notification.type}
           </li>
         </ul>
-
-        <hr className="border-b-2 border-gray-400 my-4" />
+        <hr className="border-b-1 border-black" />
       </div>
     );
   });
 
   useEffect(() => {
-    if (isScrolling && scrollRef.current) {
-      const scrollInterval = setInterval(() => {
-        if (scrollRef.current) {
-          scrollRef.current.scrollTop += 1;
-          if (scrollRef.current.scrollTop >= scrollRef.current.scrollHeight) {
-            scrollRef.current.scrollTop = 0;
-          }
-        }
-      }, 30);
+    // Start scrolling after 3 seconds delay
+    const timeoutId = setTimeout(() => {
+      setIsScrolling(true);
+    }, 3000);
 
-      return () => clearInterval(scrollInterval);
+    return () => clearTimeout(timeoutId);
+  }, []);
+
+  useEffect(() => {
+    if (isScrolling) {
+      const intervalId = setInterval(() => {
+        setCurrentNotificationIndex((prevIndex) => {
+          // Move to the next notification
+          const nextIndex = prevIndex + 1;
+          // If we reach the end, loop back to the start
+          return nextIndex >= notifications.length ? 0 : nextIndex;
+        });
+      }, 2000); // Change notification every 3 seconds
+
+      return () => clearInterval(intervalId);
     }
   }, [isScrolling]);
 
+  // Function to handle pause
   const handlePause = () => {
     setIsScrolling(false);
-    if (scrollRef.current) {
-      setScrollPosition(scrollRef.current.scrollTop);
-    }
   };
 
+  // Function to handle play
   const handlePlay = () => {
     setIsScrolling(true);
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollPosition;
-    }
   };
 
   return (
-    <div className="h-5/6">
-      <h2 className="text-xl sm:text-2xl font-bold text-center mb-4 text-red-600">
-        Notices & Circulars
-      </h2>
-
-      <div className="relative h-heightsec overflow-hidden bg-yellow-50" ref={scrollRef}>
-        <div className={`absolute w-full ${isScrolling ? "animate-marquee" : ""} space-y-4`}>
-          {notificationsJSX}
-        </div>
+    <div className="bg-yellow h-heightsec">
+      <div className="flex items-center h-10 w-full bg-white">
+        <h2 className="text-2xl flex h-8 w-96 mb-2 font-bold bg-gray-200">Notices & Circulars</h2>
+        <div className="justify-start border-t-4 w-full border-yellow"></div>
       </div>
 
-      <div className="bg-kesariya p-2 flex justify-between items-center mt-4">
-        <button className="text-white border-2 border-white text-sm sm:text-base py-1 px-4 shadow-md hover:bg-amber-400 hover:border-yellow">
+      {/* notification slide here */}
+      <div className="relative h-96 overflow-hidden" ref={scrollRef}>
+        <div
+          className="absolute w-full space-y-4"
+          style={{
+            transform: `translateY(-${currentNotificationIndex * 26}%)`,
+            transition: "transform 0.5s ease",
+          }}
+        >
+          {notificationsJSX.slice(currentNotificationIndex, currentNotificationIndex + 4)}
+        </div>
+      </div>
+      {/* notification slide end */}
+
+      {/* button section start here */}
+      <div className="bg-kesariya p-2 flex justify-between items-center ">
+        <button className="text-white border-2 border-white text-sm sm:text-base py-1 px-4 shadow-md hover:bg-amber-400 hover:border-amber-400">
           View All Notices / Circulars
         </button>
         <button
-          className="bg-yellow-600 text-white border-2 border-white p-2 shadow-md hover:bg-yellow-700"
+          className="bg-yellow-600 text-white border-2 border-white p-2 shadow-md hover:bg-amber-400 hover:border-amber-400"
           onClick={() => (isScrolling ? handlePause() : handlePlay())}
         >
           {isScrolling ? <FaPause /> : <FaPlay />}
         </button>
       </div>
+      {/* button section end here */}
     </div>
   );
 };

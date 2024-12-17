@@ -43,17 +43,18 @@ const QuickLinks = () => {
   ];
 
   return (
-    <div className="p-2 bg-gray-50">
-      <h2 className="text-lg font-bold text-center mb-4 p-2 bg-slate-400">
-        Quick Links
-      </h2>
-      <div className="flex flex-col space-y-2 relative">
+    <div className=" bg-gray-50">
+      <div className="w-full flex bg-white h-10 items-center">
+      <h2 className="text-2xl w-80  font-bold text-left mb-2 h-8 items-center  bg-gray-200">Quick Links</h2>
+      <div className="justify-start border-t-4 w-full  border-yellow "></div> {/* Vertical line */}
+    </div>
+      <div className="flex flex-col m-0 space-y-2 relative">
         {links.map((link, index) => (
           <div key={index} className="relative group">
             {/* Main Link */}
             <a
               href={link.url}
-              className="flex items-center bg-gray-300 shadow-md p-1 transition-colors group-hover:text-white group-hover:bg-kesariya"
+              className="flex items-center bg-gray-300 shadow-md p-2 transition-colors group-hover:text-white group-hover:bg-kesariya"
             >
               <img
                 src={link.image}

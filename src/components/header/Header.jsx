@@ -47,12 +47,11 @@ const Header = () => {
   </div>
 
   <div className=" basis-2/4 header-right flex flex-row justify-end items-center ">
-      {/* Social Links */}
+      
         <div className="social">
           <SocialLinks />
         </div>
-        
-        {/* Right Logo */}
+       
         <div className="right-logo-container">
           <img src={logo2} alt="University Logo 2" className="logo right-logo" />
         </div>
