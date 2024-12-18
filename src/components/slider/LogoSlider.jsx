@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom"; // Import Link from react-router-dom
 
 // Import logos
 import Logo1 from "../../assets/images/1.jpg";
@@ -22,26 +23,26 @@ import Logo19 from "../../assets/images/19.png";
 const LogoSlider = () => {
   const [currentLogoIndex, setCurrentLogoIndex] = useState(0);
 
-  // Array of imported logos
+  // Array of imported logos and corresponding routes
   const logos = [
-    Logo1,
-    Logo2,
-    Logo3,
-    Logo5,
-    Logo6,
-    Logo7,
-    Logo6,
-    Logo8,
-    Logo9,
-    Logo11,
-    Logo12,
-    Logo13,
-    Logo14,
-    Logo15,
-    Logo16,
-    Logo17,
-    Logo18,
-    Logo19,
+    { src: Logo1, path: "/page1" },
+    { src: Logo2, path: "/page2" },
+    { src: Logo3, path: "/page3" },
+    { src: Logo5, path: "/page4" },
+    { src: Logo6, path: "/page5" },
+    { src: Logo7, path: "/page6" },
+    { src: Logo6, path: "/page7" },
+    { src: Logo8, path: "/page8" },
+    { src: Logo9, path: "/page9" },
+    { src: Logo11, path: "/page10" },
+    { src: Logo12, path: "/page11" },
+    { src: Logo13, path: "/page12" },
+    { src: Logo14, path: "/page13" },
+    { src: Logo15, path: "/page14" },
+    { src: Logo16, path: "/page15" },
+    { src: Logo17, path: "/page16" },
+    { src: Logo18, path: "/page17" },
+    { src: Logo19, path: "/page18" },
   ];
   const logosPerGroup = 6;
 
@@ -78,19 +79,23 @@ const LogoSlider = () => {
       <div>
         <h1 className="text-center text-2xl font-bold">LINKS</h1>
       </div>
-      <div className="overflow-hidden p-2   rounded-sm w-full">
+      <div className="overflow-hidden p-2 rounded-sm w-full">
         <div
-          className="flex h-28  transition-transform duration-700 ease-in-out"
+          className="flex h-28 transition-transform duration-700 ease-in-out"
           style={{ transform: `translateX(${offset}%)` }}
         >
           {logos.map((logo, index) => (
-            <a href="#" key={index} className="flex-none w-1/6 border-2 mr-2 border-gray-300 p-2 rounded-sm">
+            <Link
+              to={logo.path} // Set the proper route here
+              key={index}
+              className="flex-none w-1/6 border-2 mr-2 border-gray-300 p-2 rounded-sm"
+            >
               <img
-                src={logo}
+                src={logo.src}
                 alt={`Logo ${index + 1}`}
-                className="h-24 w-full  bg-white object-fill"
+                className="h-24 w-full bg-white object-fill"
               />
-            </a>
+            </Link>
           ))}
         </div>
       </div>

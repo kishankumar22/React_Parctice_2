@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { FaRegArrowAltCircleRight, FaPlay, FaPause } from "react-icons/fa";
 
 const NotificationCircular = () => {
@@ -144,7 +145,8 @@ const NotificationCircular = () => {
       {/* button section start here */}
       <div className="bg-kesariya p-2 flex justify-between items-center ">
         <button className="text-white border-2 border-white text-sm sm:text-base py-1 px-4 shadow-md hover:bg-amber-400 hover:border-amber-400">
-          View All Notices / Circulars
+          <Link to ="/allnotification">View All Notices / Circulars
+          </Link> 
         </button>
         <button
           className="bg-yellow-600 text-white border-2 border-white p-2 shadow-md hover:bg-amber-400 hover:border-amber-400"

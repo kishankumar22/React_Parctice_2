@@ -48,7 +48,7 @@ const Header = () => {
 
   <div className=" basis-2/4 header-right flex flex-row justify-end items-center ">
       
-        <div className="social">
+        <div className="">
           <SocialLinks />
         </div>
        
