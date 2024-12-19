@@ -64,14 +64,14 @@ const NotificationCircular = () => {
   notifications.forEach((notification, index) => {
     notificationsJSX.push(
       <div key={index} className="border-yellow-500 transition-shadow rounded mb-4 p-2">
-        <div className="text-black px-12 text-sm sm:text-xs font-medium">
+        <div className="text-sky-500 font-bold px-12 py-1 text-sm sm:text-xs">
           Date uploaded: {notification.dateUploaded}
         </div>
         <div className="flex items-start px-4 -mb-2 ">
-          <FaRegArrowAltCircleRight className="w-5 h-5 sm:w-6 sm:h-6 text-white mr-2" />
-          <h1 className="text-sm font-bold sm:text-xs lg:text-sm text-kesariya">{notification.title}</h1>
+          <FaRegArrowAltCircleRight className="w-5 h-5 sm:w-6 sm:h-6 text-red-700 mr-2" />
+          <h1 className="text-sm font-bold sm:text-xs lg:text-sm text-black">{notification.title}</h1>
         </div>
-        <ul className="text-xs px-12 mt-2 sm:text-xs text-gray-500 flex flex-wrap gap-2 pb-1">
+        <ul className="text-xs px-12 mt-2 sm:text-xs text-sky-800 flex flex-wrap gap-2 pb-1">
           <li>
             <b>Size:</b> {notification.size} |
           </li>
@@ -122,16 +122,16 @@ const NotificationCircular = () => {
   };
 
   return (
-    <div className="bg-yellow h-heightsec">
+    <div className="bg-white h-heightsec">
       <div className="flex items-center h-10 w-full bg-white">
-        <h2 className="text-2xl flex h-8 w-96 mb-2 font-bold bg-gray-200">Notices & Circulars</h2>
-        <div className="justify-start border-t-4 w-full border-yellow"></div>
+        <h2 className="text-2xl flex h-8 w-96 mb-2 font-bold bg-blue-200">Notices & Circulars</h2>
+        <div className="justify-start border-t-4 w-full border-blue-800 mb-2"></div>
       </div>
 
       {/* notification slide here */}
       <div className="relative h-96 overflow-hidden" ref={scrollRef}>
         <div
-          className="absolute w-full space-y-4"
+          className="absolute w-full space-y-3"
           style={{
             transform: `translateY(-${currentNotificationIndex * 26}%)`,
             transition: "transform 0.5s ease",
@@ -143,13 +143,13 @@ const NotificationCircular = () => {
       {/* notification slide end */}
 
       {/* button section start here */}
-      <div className="bg-kesariya p-2 flex justify-between items-center ">
-        <button className="text-white border-2 border-white text-sm sm:text-base py-1 px-4 shadow-md hover:bg-amber-400 hover:border-amber-400">
+      <div className="bg-blue-900 p-2   flex justify-between items-center ">
+        <button className="text-white border-2 border-white text-sm sm:text-base py-1 px-4 shadow-md hover:bg-blue-200 hover:border-blue-200 hover:text-black">
           <Link to ="/allnotification">View All Notices / Circulars
           </Link> 
         </button>
         <button
-          className="bg-yellow-600 text-white border-2 border-white p-2 shadow-md hover:bg-amber-400 hover:border-amber-400"
+          className="bg-yellow-600 text-white border-2 border-white p-2 shadow-md hover:bg-blue-200 hover:border-blue-200  hover:text-black"
           onClick={() => (isScrolling ? handlePause() : handlePlay())}
         >
           {isScrolling ? <FaPause /> : <FaPlay />}

@@ -66,19 +66,19 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="navbar">
-        <ul className="navbar-list text-base font-normal">
+      <nav className="navbar ">
+        <ul className="navbar-list text-base font-normal uppercase">
           <li className="navbar-item active">
             <Link to="/">Home</Link>
           </li>
           {menuItems.map((item, index) => (
-            <li key={index} className="navbar-item dropdown">
+            <li key={index} className="navbar-item dropdown border-black border-l-2">
               <Link to="/aboutus" className="dropdown-link">
                 {item.name} <IoMdArrowDropdown className="dropdown-arrow" />
               </Link>
               <ul className="dropdown-menu">
                 {item.dropdown.map((subItem, subIndex) => (
-                  <li key={subIndex} className="dropdown-item">
+                  <li key={subIndex} className="dropdown-item lowercase">
                     {typeof subItem === "string" ? (
                       <Link to="/aboutus">{subItem}</Link>
                     ) : (
@@ -88,7 +88,7 @@ const Navbar = () => {
                         </Link>
                         <ul className="nested-dropdown-menu">
                           {subItem.nestedDropdown.map((nestedItem, nestedIndex) => (
-                            <li key={nestedIndex} className="dropdown-item">
+                            <li key={nestedIndex} className="dropdown-item ">
                               {typeof nestedItem === "string" ? (
                                 <Link to="/aboutus">{nestedItem}</Link>
                               ) : (

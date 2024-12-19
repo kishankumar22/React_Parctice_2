@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Layout from"../components/layout/Layout"
 import ddu from "../assets/images/DDU_Campus.png";
 
 const ContactPage = () => {
@@ -25,22 +26,23 @@ const ContactPage = () => {
     console.log(formData);
   };
   return (
-    <div className="auto">
+    <Layout>
+    <div className="border border-gray-200 m-6 rounded-md shadow-md shadow-gray-400 ">
       <div className="flex ">
          {/* Left Side: Contact Form */}
       <div className="w-1/2  flex p-4 ">
-      <div className="w-full  border-2 border-gray-300 rounded-md ">
-        <iframe
-          title="University Location"
-          src="https://www.google.com/maps/embed/v1/place?q=Deen%20Dayal%20Upadhyaya%20Gorakhpur%20University%2C%20Civil%20Lines%2C%20Gorakhpur%20(U.P.)%20-%20273009%20%5B%20INDIA%20%5D&key=YOUR_GOOGLE_MAPS_API_KEY"
-          width="100%"
-          height="100%"
-          frameBorder="0"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          aria-hidden="false"
-          tabIndex="0"
-        ></iframe>
+      <div className="w-full ml-3  h-96 border-2 border-gray-300 rounded-md ">
+      <iframe
+    title="University Location"
+    src="https://www.google.com/maps/embed/v1/place?q=Deen%20Dayal%20Upadhyaya%20Gorakhpur%20University%2C%20Civil%20Lines%2C%20Gorakhpur%20(U.P.)%20-%20273009%20%5B%20INDIA%20%5D&key=AIzaSyBEIqDhk4kpJH8s0RmyaZ7jW1wmDr00bdU"
+    width="100%"
+    height="100%"
+    frameBorder="0"
+    style={{ border: 0 }}
+    allowFullScreen=""
+    aria-hidden="false"
+    tabIndex="0"
+></iframe>
       </div>
       </div>
 
@@ -97,17 +99,17 @@ const ContactPage = () => {
 
       </div>
       {/* end here  */}
-      <div className="mt-3">
+      <div className="mt-3 p-2">
         <img src={ddu} alt="" srcset="" />
       </div>
       <div>
 
-      <div className="w-full p-2 ">
-      <h2 className="text-3xl font-bold  mb-6">Feedback Form</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <div className="w-full p-4   ">
+      <h2 className="text-3xl font-normal text-kesariya pb-2 mb-6 border-b-2 border-black border-dashed">Feedback Form</h2>
+      <form onSubmit={handleSubmit}className="p-4">
+        <div className="grid p-2 grid-cols-1 md:grid-cols-2 gap-x-32">
           {/* Left Column */}
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <label htmlFor="name" className="text-lg font-semibold mb-2">
               Name
             </label>
@@ -117,7 +119,7 @@ const ContactPage = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
-              className="p-3 border border-gray-300 rounded-md"
+              className="p-2 border  border-gray-300 rounded-md"
               placeholder="Your Name"
               required
             />
@@ -132,7 +134,7 @@ const ContactPage = () => {
               name="email"
               value={formData.email}
               onChange={handleInputChange}
-              className="p-3 border border-gray-300 rounded-md"
+              className="p-2 border border-gray-300 rounded-md"
               placeholder="Your Email"
               required
             />
@@ -147,7 +149,7 @@ const ContactPage = () => {
               name="phone"
               value={formData.phone}
               onChange={handleInputChange}
-              className="p-3 border border-gray-300 rounded-md"
+              className="p-2 border border-gray-300 rounded-md"
               placeholder="Your Phone Number"
               required
             />
@@ -164,7 +166,7 @@ const ContactPage = () => {
               name="address"
               value={formData.address}
               onChange={handleInputChange}
-              className="p-3 border border-gray-300 rounded-md"
+              className="p-2 border border-gray-300 rounded-md"
               placeholder="Your Address"
               required
             />
@@ -179,7 +181,7 @@ const ContactPage = () => {
               name="city"
               value={formData.city}
               onChange={handleInputChange}
-              className="p-3 border border-gray-300 rounded-md"
+              className="p-2 border border-gray-300 rounded-md"
               placeholder="Your City"
               required
             />
@@ -210,18 +212,19 @@ const ContactPage = () => {
               name="message"
               value={formData.message}
               onChange={handleInputChange}
-              className="p-3 border border-gray-300 rounded-md"
+              className="p-3 border w-2/4 border-gray-300 rounded-md"
               placeholder="Your Message"
-              rows="4"
+              rows="5"
+              cols="40"
               required
             />
           </div>
 
           {/* Submit Button */}
-          <div className="col-span-2 flex justify-center">
+          <div className="col-span-2 flex justify-center mt-">
             <button
               type="submit"
-              className="bg-blue-500 text-white p-3 rounded-md font-semibold hover:bg-blue-600"
+              className="w-64 h-10   bg-blue-500 text-white rounded-md font-semibold hover:bg-blue-600"
             >
               Send
             </button>
@@ -234,6 +237,7 @@ const ContactPage = () => {
 
     
      </div>
+     </Layout>
   );
 };
 

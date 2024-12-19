@@ -12,7 +12,7 @@ export const theme = {
       'links_colors': '#ececec',
     },
     height:{
-      'heightsec':'478px',
+      'heightsec':'477px',
     },
     animation: {
       marquee: "marquee 10s linear infinite",

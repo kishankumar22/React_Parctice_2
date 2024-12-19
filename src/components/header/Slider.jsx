@@ -56,7 +56,7 @@ const Slider = () => {
               className="w-full h-[464px] object-cover rounded-lg"
             />
             {/* Slide Message */}
-            <div className="bg-red-800 p-3 shadow-md text-center">
+            <div className="bg-blue-800 p-3 shadow-md text-center">
               <p className="text-white">{slide.message}</p>
             </div>
           </div>

@@ -27,7 +27,7 @@ const NewsHead = () => {
   ];
 
   return (
-    <div className="news-head bg-yellow flex flex-col sm:flex-row h-auto p-2 font-bold items-center">
+    <div className="news-head bg-gray-200 flex flex-col sm:flex-row h-auto p-2 font-bold items-center">
       <ul className="flex flex-wrap p-1 my-1 justify-center items-center w-full">
         {newsItems.map((item, index) => (
           <li key={index} className="mx-3 mb-2 sm:mb-0">
