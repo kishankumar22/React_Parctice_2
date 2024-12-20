@@ -11,8 +11,7 @@ import Footer from './components/footer/Footer';
 
 function App() {
   return (
-    <Router  basename="/React_Parctice_2
-    ">
+    <Router >
 
       {/* <Header /> */}
       <Routes>

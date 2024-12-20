@@ -17,6 +17,9 @@ export const theme = {
     animation: {
       marquee: "marquee 10s linear infinite",
     },
+    fontFamily: {
+      roboto: ['Roboto', 'sans-serif'], // Add Roboto font
+    },
     keyframes: {
       marquee: {
         '0%': { transform: 'translateY(100%)' },

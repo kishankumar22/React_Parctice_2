@@ -24,6 +24,16 @@ const ContactPage = () => {
     e.preventDefault();
     // Handle form submission logic (e.g., send data to a server)
     console.log(formData);
+     // Reset form data to initial state
+     setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      address: "",
+      city: "",
+      country: "",
+      message: "",
+  });
   };
   return (
     <Layout>
@@ -49,9 +59,9 @@ const ContactPage = () => {
       {/* Right Side: Contact Details */}
       <div className="w-1/2 p-4">
       <p className="text-2xl font-bold w-full text-gray-700 mb-4">
-        <strong className="text-kesariya font-bold w-full border-kesariya border-b-2 pb-2">Deen Dayal Upadhyaya Gorakhpur University</strong>
+        <strong className="text-blue-900 font-bold w-full border-blue-800 border-b-2 pb-2">Deen Dayal Upadhyaya Gorakhpur University</strong>
        </p> 
-       <div className="w-32 h-1 ml-0 bg-kesariya -m-2.5"></div>
+       <div className="w-32 h-1 ml-0 bg-blue-800 -mt-3"></div>
        <p className="mt-4"> Civil Lines, Gorakhpur (U.P.) - 273009 [ INDIA ]
         </p>
       
@@ -105,8 +115,8 @@ const ContactPage = () => {
       <div>
 
       <div className="w-full p-4   ">
-      <h2 className="text-3xl font-normal text-kesariya pb-2 mb-6 border-b-2 border-black border-dashed">Feedback Form</h2>
-      <form onSubmit={handleSubmit}className="p-4">
+      <h2 className="text-3xl font-normal text-blue-800 border-b-2 border-black border-dashed">Feedback Form</h2>
+      <form onSubmit={handleSubmit}className="pt-4">
         <div className="grid p-2 grid-cols-1 md:grid-cols-2 gap-x-32">
           {/* Left Column */}
           <div className="flex flex-col ">
@@ -156,7 +166,7 @@ const ContactPage = () => {
           </div>
 
           {/* Right Column */}
-          <div className="flex flex-col">
+          <div className="flex flex-col ">
             <label htmlFor="address" className="text-lg font-semibold mb-2">
               Address
             </label>
@@ -214,17 +224,16 @@ const ContactPage = () => {
               onChange={handleInputChange}
               className="p-3 border w-2/4 border-gray-300 rounded-md"
               placeholder="Your Message"
-              rows="5"
-              cols="40"
+        
               required
             />
           </div>
 
           {/* Submit Button */}
-          <div className="col-span-2 flex justify-center mt-">
+          <div className="col-span-2 flex justify-center mt-6">
             <button
               type="submit"
-              className="w-64 h-10   bg-blue-500 text-white rounded-md font-semibold hover:bg-blue-600"
+              className="w-64 h-10   bg-blue-800 text-white rounded-md font-semibold hover:bg-blue-600"
             >
               Send
             </button>
