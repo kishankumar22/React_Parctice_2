@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import news from "../../assets/images/new.gif";
+import news from "../../assets/logo/new.gif";
 
 const NewsHead = () => {
   const newsItems = [

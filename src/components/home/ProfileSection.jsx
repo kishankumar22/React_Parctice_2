@@ -6,10 +6,12 @@ import { Link } from "react-router-dom";
 const ProfileSection = () => {
   return (
     <div className='h-heightsec flex-wrap justify-center text-center'>
-      <div className="w-full flex  h-10 items-center ">
-        <h2 className="text-2xl flex h-8 w-28  font-bold bg-blue-200">Profile</h2>
-        <div className="justify-start border-t-4 w-full border-blue-800"></div> {/* Vertical line */}
-      </div>
+      <div className="flex items-center h-10 w-full bg-white">
+  <h2 className="text-sm p-1 sm:text-lg md:text-[1.25rem] flex h-8 w-96 mb-2 font-bold bg-blue-200">
+       Profile
+  </h2>
+  <div className="justify-start border-t-4 w-full border-blue-800 mb-2"></div>
+</div>
       <div className='flex flex-col h-56 pt-1.5  items-center border-2 border-gray-200'>
         <img className='h-28 rounded-full object-fill m-1.5' src={pic2} alt="" />
         <h1 className='text-blue-700 font-semibold text-sm'>Smt. Anandiben Patel</h1>

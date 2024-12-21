@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Layout from"../components/layout/Layout"
-import ddu from "../assets/images/DDU_Campus.png";
+import ddu from "../assets/logo/DDU_Campus.png";
 
 const ContactPage = () => {
 

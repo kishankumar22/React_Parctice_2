@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { FaCaretRight } from "react-icons/fa";
 
 // Replace these imports with your actual image paths
-import studentImg from "../../assets/images/student.png";
-import facilitiesImg from "../../assets/images/e-learn.png";
-import libraryImg from "../../assets/images/research.png";
-import iqacImg from "../../assets/images/celebration.png";
-import nirfImg from "../../assets/images/accr.png";
-import alumniImg from "../../assets/images/admission.png";
+import studentImg from "../../assets/logo/student.png";
+import facilitiesImg from "../../assets/logo/e-learn.png";
+import libraryImg from "../../assets/logo/research.png";
+import iqacImg from "../../assets/logo/celebration.png";
+import nirfImg from "../../assets/logo/accr.png";
+import alumniImg from "../../assets/logo/admission.png";
 
 const QuickLinks = () => {
   const links = [

@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const WhyUs = () => {
   return (
     <div className='h-heightsec'>
-        <div className="flex bg-white h-10 items-center">
-        <h2 className="text-xl w-40 font-bold  mb-2 h-8  bg-blue-200">
-          Why US
-        </h2>
-        <div className="justify-start border-t-4 w-full border-blue-800 mb-2"></div>
-      </div>
+         <div className="flex items-center h-10 w-full bg-white">
+  <h2 className="text-sm p-1 sm:text-lg md:text-[1.25rem] flex h-8 w-96 mb-2 font-bold bg-blue-200">
+      Why  Us   
+  </h2>
+  <div className="justify-start border-t-4 w-full border-blue-800 mb-2"></div>
+</div>
       <div className='p-2  border border-gray-200 shadow-2xl '>
         <div className=''><img src={whyus} alt="" /></div>
         <div>

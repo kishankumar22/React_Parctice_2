@@ -1,21 +1,40 @@
 import React, { useState, useEffect } from 'react';
-import pic1 from "../../assets/images/pic1.png";
-import pic2 from "../../assets/images/pic2.png";
-import pic3 from "../../assets/images/pic3.png";
-import pic4 from "../../assets/images/pic4.png";
-import pic5 from "../../assets/images/pic5.png";
+
+// Dynamically import images using Vite's import.meta.glob
+const imageFiles = import.meta.glob('../../assets/images/*.{jpg,png}'); // Adjust to your image folder path
+
+// Create an array to store the image paths
+const loadImages = async () => {
+  const images = [];
+  // Loop through all the keys of the imported files
+  for (const key in imageFiles) {
+    const image = await imageFiles[key](); // Call the function to get the image URL
+    images.push(image.default); // Push only the image URLs into the array
+  }
+  return images;
+};
 
 const Slider = () => {
-  // Array of images and corresponding messages
-  const slides = [
-    { image: pic1, message: "This is the first slide message." },
-    { image: pic2, message: "This is the second slide message." },
-    { image: pic3, message: "This is the third slide message." },
-    { image: pic4, message: "This is the fourth slide message." },
-    { image: pic5, message: "This is the fifth slide message." },
-  ];
+  const [slides, setSlides] = useState([]);
+  const [messages, setMessages] = useState([
+    "Welcome to our website!",
+    "Explore our new collection!",
+    "Special discounts on selected items!",
+    "Limited time offer!",
+    "Join our community today!",
+  ]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(true); // Track transition status
+
+  // Load images after the component mounts
+  useEffect(() => {
+    const fetchImages = async () => {
+      const images = await loadImages(); // Get images dynamically
+      setSlides([...images, images[0]]); // Add the first image at the end for seamless transition
+    };
+    fetchImages();
+  }, []);
 
   // Automatically slide images
   useEffect(() => {
@@ -23,41 +42,47 @@ const Slider = () => {
       nextImage();
     }, 3000); // Change slide every 3 seconds
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, slides]);
 
-  // Next image handler
+  // Next image handler (infinite linear transition)
   const nextImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % slides.length);
+    setIsTransitioning(true);
+    setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
-  // Previous image handler
-  const prevImage = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + slides.length) % slides.length);
-  };
+  // Reset slider position after the last slide
+  useEffect(() => {
+    if (currentIndex === slides.length - 1) {
+      const timeout = setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(0); // Instantly move back to the first image (no animation)
+      }, 1000); // Wait for the animation to finish
+      return () => clearTimeout(timeout);
+    }
+  }, [currentIndex, slides.length]);
 
   return (
     <div className="relative w-full mx-auto overflow-hidden">
       {/* Slider Container */}
       <div
-        className="flex transition-transform duration-1000 ease-out delay-500"
+        className="flex transition-transform ease-linear duration-1000" 
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
+          transition: isTransitioning ? 'transform 1s ease-in-out' : 'none',
         }}
       >
+        {/* Render slides */}
         {slides.map((slide, index) => (
-          <div
-            key={index}
-            className="min-w-full text-center"
-          >
+          <div key={index} className="min-w-full text-center">
             {/* Image */}
             <img
-              src={slide.image}
+              src={slide}
               alt={`Slide ${index + 1}`}
               className="w-full h-[464px] object-cover rounded-lg"
             />
             {/* Slide Message */}
             <div className="bg-blue-800 p-3 shadow-md text-center">
-              <p className="text-white">{slide.message}</p>
+              <p className="text-white">{messages[index % messages.length]}</p>
             </div>
           </div>
         ))}
@@ -65,8 +90,8 @@ const Slider = () => {
 
       {/* Left Arrow */}
       <button
-        onClick={prevImage}
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black rounded-full p-2 opacity-50 hover:opacity-100 transition-opacity "
+        onClick={() => setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : slides.length - 2))}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black rounded-full p-2 opacity-50 hover:opacity-100 transition-opacity"
       >
         &lt;
       </button>

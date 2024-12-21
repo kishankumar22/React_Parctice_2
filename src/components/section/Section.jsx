@@ -8,10 +8,10 @@ import WhyUs from '../home/WhyUs'
 const Section = () => {
   return (
     <>
-    <div className='flex mt-6 h-heightsec p-2 gap-2 text-lg'>
-        <div className='w-1/4  '><WhyUs/></div>
-        <div className='w-2/4 '><NoticeCircular/></div>
-        <div className='w-1/4 '><ProfileSection/></div>
+    <div className='flex  h-heightsec gap-2 p-2 text-lg'>
+        <div className='basis-1/4 '><WhyUs/></div>
+        <div className='basis-2/4'><NoticeCircular/></div>
+        <div className='basis-1/4'><ProfileSection/></div>
     </div>
     </>
   )

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo1 from "../../assets/images/logo3.png"; // Replace with your logo
+import logo1 from "../../assets/logo/logo3.png"; // Replace with your logo
 import { FaChevronRight } from "react-icons/fa";
 
 const Footer = () => {

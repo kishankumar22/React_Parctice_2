@@ -1,9 +1,9 @@
 import React from "react";
 import "./header.css";
-import logo1 from "../../assets/images/logo.jpg"; // Replace with your logo
-import logo2 from "../../assets/images/aicte-logo.jpg"; // Replace with your logo
-import logo3 from "../../assets/images/bte up.jpg"; // Replace with your logo
-import logo4 from "../../assets/images/pci logo.jpg"; // Replace with your logo
+import logo1 from "../../assets/logo/logo.jpg"; // Replace with your logo
+import logo2 from "../../assets/logo/aicte-logo.jpg"; // Replace with your logo
+import logo3 from "../../assets/logo/bte up.jpg"; // Replace with your logo
+import logo4 from "../../assets/logo/pci logo.jpg"; // Replace with your logo
 import SocialLinks from "../socialLinks/SocialLinks";
 
 const Header = () => {

@@ -10,7 +10,7 @@ import Layout from '../components/layout/Layout'
 const HomePage = () => {
   return (
     <Layout>
-          <div>
+          <div className=' md:flex-col '>
            <Slider/>
            <NewsHead/>
            <Section/>
