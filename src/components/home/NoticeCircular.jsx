@@ -44,7 +44,7 @@ const NotificationCircular = () => {
   const handlePlay = () => setIsScrolling(true);
 
   return (
-    <div className="bg-white h-heightsec">
+    <div className="bg-white h-heightsec ">
       {/* Header */}
       <div className="flex items-center h-10 w-full bg-white">
         <h2 className="text-sm p-1 sm:text-lg md:text-[1.25rem] flex h-8 w-96 mb-2 font-bold bg-blue-200">
@@ -57,7 +57,7 @@ const NotificationCircular = () => {
       <div
         className="relative h-96 overflow-hidden"
         ref={scrollRef}
-        style={{ overflowY: "scroll", scrollBehavior: "auto" }}
+       
       >
         <div>
           {notifications.map((notification, index) => (
@@ -65,16 +65,16 @@ const NotificationCircular = () => {
               key={index}
               className="h-24 border-yellow-500 rounded mb-4 p-2 bg-white"
             >
-              <div className="text-sky-500 font-bold px-12 py-1 text-sm sm:text-xs">
+              <div className="text-sky-500 font-bold px-12 py-2 text-sm sm:text-xs">
                 Date uploaded: {notification.dateUploaded}
               </div>
-              <div className="flex items-start px-4 -mb-2">
+              <div className="flex items-start px-4 -mb-2  ">
                 <FaRegArrowAltCircleRight className="w-5 h-5 sm:w-6 sm:h-6 text-red-700 mr-2" />
                 <h1 className="text-sm font-bold sm:text-xs lg:text-sm text-black">
                   {notification.title}
                 </h1>
               </div>
-              <ul className="text-xs px-12 mt-2 sm:text-xs text-sky-800 flex flex-wrap gap-2 pb-1">
+              <ul className="text-xs px-12 mt-2 sm:text-xs text-sky-800 flex flex-wrap  pb-2 ">
                 <li>
                   <b>Size:</b> {notification.size} |
                 </li>
