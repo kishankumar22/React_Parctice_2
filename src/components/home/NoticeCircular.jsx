@@ -1,44 +1,47 @@
-// src/components/NotificationCircular.jsx
-
 import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { FaRegArrowAltCircleRight, FaPlay, FaPause } from "react-icons/fa";
-import { fetchNotifications } from "./NotificationDataLoader";
+import axiosInstance from "../../config";
 
 const NotificationCircular = () => {
-  const [isScrolling, setIsScrolling] = useState(true); // Auto-scroll state
-  const [notifications, setNotifications] = useState([]); // Notifications array
-  const scrollRef = useRef(null); // Ref for scrolling container
+  const [isScrolling, setIsScrolling] = useState(true);
+  const [notifications, setNotifications] = useState([]);
+  const scrollRef = useRef(null);
+  const scrollSpeed = 1; // Adjust this value for faster/slower scrolling
 
   useEffect(() => {
-    const loadNotifications = async () => {
-      const data = await fetchNotifications();
-      setNotifications([...data, ...data]); // Duplicate array for infinite scrolling
+    const fetchNotifications = async () => {
+      try {
+        const response = await axiosInstance.get('/notifications/all-notification');
+        setNotifications([...response.data, ...response.data, ...response.data]); // Duplicate array for smoother infinite scrolling
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
     };
-    loadNotifications();
+
+    fetchNotifications();
   }, []);
 
   useEffect(() => {
-    let scrollInterval;
+    let animationFrameId;
 
-    if (isScrolling && scrollRef.current) {
-      scrollInterval = setInterval(() => {
-        if (scrollRef.current) {
-          scrollRef.current.scrollTop += 1; // Slowly increase scrollTop
-          
-          // Reset to top when scrolled past halfway point
-          if (
-            scrollRef.current.scrollTop >=
-            scrollRef.current.scrollHeight / 2
-          ) {
-            scrollRef.current.scrollTop = 0;
-          }
+    const scroll = () => {
+      if (isScrolling && scrollRef.current) {
+        scrollRef.current.scrollTop += scrollSpeed;
+
+        // Reset to top when scrolled past the end of the list
+        if (scrollRef.current.scrollTop >= scrollRef.current.scrollHeight / 2) {
+          scrollRef.current.scrollTop = 0;
         }
-      }, 50); // Slow upward movement
-    }
+      }
+      animationFrameId = requestAnimationFrame(scroll);
+    };
 
-    return () => clearInterval(scrollInterval);
-  }, [isScrolling, notifications.length]);
+    scroll(); // Start scrolling
+
+    return () => cancelAnimationFrame(animationFrameId); // Cleanup on unmount
+  }, [isScrolling]);
 
   const handlePause = () => setIsScrolling(false);
   const handlePlay = () => setIsScrolling(true);
@@ -54,37 +57,29 @@ const NotificationCircular = () => {
       </div>
 
       {/* Notification Slider */}
-      <div
-        className="relative h-96 overflow-hidden"
-        ref={scrollRef}
-       
-      >
+      <div className="relative h-96 overflow-hidden" ref={scrollRef}>
         <div>
-          {notifications.map((notification, index) => (
+          {notifications.map((notification) => (
             <div
-              key={index}
-              className="h-24 border-yellow-500 rounded mb-4 p-2 bg-white"
+              key={notification.id}
+              className="h-16 border-yellow-500 rounded bg-white"
             >
-              <div className="text-sky-500 font-bold px-12 py-2 text-sm sm:text-xs">
-                Date uploaded: {notification.dateUploaded}
+              <div className="text-sky-500 px-12 pb-0.5 text-sm sm:text-xs">
+                <b className="font-semibold text-black">Date uploaded:</b> {new Date(notification.created_on).toLocaleDateString('en-GB')}
               </div>
-              <div className="flex items-start px-4 -mb-2  ">
-                <FaRegArrowAltCircleRight className="w-5 h-5 sm:w-6 sm:h-6 text-red-700 mr-2" />
+              <div className="flex items-start mb-2 px-4">
+                <FaRegArrowAltCircleRight className="w-2 h-2 sm:w-6 sm:h-6 text-red-700 mr-2" />
                 <h1 className="text-sm font-bold sm:text-xs lg:text-sm text-black">
-                  {notification.title}
+                  <a 
+                    className="font-semibold flex items-center hover:text-blue-400" 
+                    href={notification.notification_url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                  >
+                    {notification.notification_message}
+                  </a>
                 </h1>
               </div>
-              <ul className="text-xs px-12 mt-2 sm:text-xs text-sky-800 flex flex-wrap  pb-2 ">
-                <li>
-                  <b>Size:</b> {notification.size} |
-                </li>
-                <li>
-                  <b>Language:</b> {notification.language} |
-                </li>
-                <li>
-                  <b>Type:</b> {notification.type}
-                </li>
-              </ul>
               <hr className="border-b-1 border-black" />
             </div>
           ))}

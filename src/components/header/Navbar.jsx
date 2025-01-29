@@ -4,126 +4,143 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Navbar = () => {
-
-  
   const menuItems = [
     {
       name: "About Us",
+      route: "/aboutus",
       dropdown: [
         {
           name: "Introduction",
+          route: "/aboutus",
           nestedDropdown: [
-            "Chancellor",
-            "Vice Chancellor",
-            "Finance Officer",
+            { name: "Chancellor", route: "/aboutus/chancellor" },
+            { name: "Vice Chancellor", route: "/aboutus/vice-chancellor" },
+            { name: "Finance Officer", route: "/aboutus/finance-officer" },
             {
               name: "Registrar",
+              route: "/aboutus/registrar",
               nestedDropdown: [
-                "Academic Calendar",
-                "List of Faculty Members",
-                "Programmes Offered",
-                "Courses, Syllabi ",
-                "Time Table",
+                { name: "Academic Calendar", route: "/aboutus/academic-calendar" },
+                { name: "List of Faculty Members", route: "/aboutus/faculty-members" },
+                { name: "Programmes Offered", route: "/aboutus/programmes-offered" },
+                { name: "Courses, Syllabi", route: "/aboutus/courses-syllabi" },
+                { name: "Time Table", route: "/aboutus/time-table" },
               ],
             },
-            "Deans of Faculties",
-            "Dean of Students' Welfare",
+            { name: "Deans of Faculties", route: "/aboutus/deans" },
+            { name: "Dean of Students' Welfare", route: "/aboutus/dean-students-welfare" },
           ],
         },
-        "Mission & Vision",
-        "Leadership",
-        "Alumni",
-        "Accreditation",
+        { name: "Mission & Vision", route: "/aboutus/mission-vision" },
+        { name: "Leadership", route: "/aboutus/leadership" },
+        { name: "Alumni", route: "/aboutus/alumni" },
+        { name: "Accreditation", route: "/aboutus/accreditation" },
       ],
     },
     {
       name: "Academics",
-      dropdown: ["Programs Offered", "Departments", "Curriculum", "Faculty", "Academic Calendar"],
+      route: "/academics",
+      dropdown: [
+        { name: "Programs Offered", route: "/academics/programs-offered" },
+        { name: "Departments", route: "/academics/departments" },
+        { name: "Curriculum", route: "/academics/curriculum" },
+        { name: "Faculty", route: "/academics/faculty" },
+        { name: "Academic Calendar", route: "/academics/academic-calendar" },
+      ],
     },
     {
       name: "Research",
-      dropdown: ["Research Areas", "Publications", "Collaborations", "Grants", "Research Centers"],
+      route: "/research",
+      dropdown: [
+        { name: "Research Areas", route: "/research/areas" },
+        { name: "Publications", route: "/research/publications" },
+        { name: "Collaborations", route: "/research/collaborations" },
+        { name: "Grants", route: "/research/grants" },
+        { name: "Research Centers", route: "/research/centers" },
+      ],
     },
     {
       name: "Campus & Facilities",
-      dropdown: ["Library", "Hostels", "Sports", "IT Services", "Transport"],
+      route: "/campus",
+      dropdown: [
+        { name: "Library", route: "/campus/library" },
+        { name: "Hostels", route: "/campus/hostels" },
+        { name: "Sports", route: "/campus/sports" },
+        { name: "IT Services", route: "/campus/it-services" },
+        { name: "Transport", route: "/campus/transport" },
+      ],
     },
     {
       name: "Admission",
-      dropdown: ["Undergraduate", "Postgraduate", "PhD", "International Students", "FAQs"],
+      route: "/admission",
+      dropdown: [
+        { name: "Undergraduate", route: "/admission/undergraduate" },
+        { name: "Postgraduate", route: "/admission/postgraduate" },
+        { name: "PhD", route: "/admission/phd" },
+        { name: "International Students", route: "/admission/international" },
+        { name: "FAQs", route: "/admission/faqs" },
+      ],
     },
     {
       name: "Examination",
-      dropdown: ["Exam Schedule", "Results", "Revaluation", "Exam Guidelines", "Online Exam Portal"],
+      route: "/examination",
+      dropdown: [
+        { name: "Exam Schedule", route: "/examination/schedule" },
+        { name: "Results", route: "/examination/results" },
+        { name: "Revaluation", route: "/examination/revaluation" },
+        { name: "Exam Guidelines", route: "/examination/guidelines" },
+        { name: "Online Exam Portal", route: "/examination/portal" },
+      ],
     },
     {
       name: "Media",
-      dropdown: ["News", "Events", "Photo Gallery", "Videos", "Press Releases"],
+      route: "/media",
+      dropdown: [
+        { name: "News", route: "/media/news" },
+        { name: "Events", route: "/media/events" },
+        { name: "Photo Gallery", route: "/media/photo-gallery" },
+        { name: "Videos", route: "/media/videos" },
+        { name: "Press Releases", route: "/media/press-releases" },
+      ],
     },
     {
       name: "Login & Portals",
-      dropdown: ["Student Portal", "Faculty Portal", "Admin Portal", "Alumni Portal", "Parent Portal"],
+      route: "/login-portals",
+      dropdown: [
+        { name: "Student Registration", route: "/registration" }, // Updated route
+        { name: "Faculty Portal", route: "/login-portals/faculty-portal" },
+        { name: "Admin Portal", route: "/login-portals/admin-portal" },
+        { name: "Alumni Portal", route: "/login-portals/alumni-portal" },
+        { name: "Parent Portal", route: "/login-portals/parent-portal" },
+      ],
     },
   ];
 
   return (
-    <>
-      <nav className="navbar ">
-        <ul className="navbar-list text-base font-normal uppercase">
-          <li className="navbar-item active">
-            <Link to="/">Home</Link>
+    <nav className="navbar">
+      <ul className="navbar-list text-base font-normal uppercase">
+        <li className="navbar-item active">
+          <Link to="/">Home</Link>
+        </li>
+        {menuItems.map((item, index) => (
+          <li key={index} className="navbar-item dropdown border-black border-l-2">
+            <Link to={item.route} className="dropdown-link">
+              {item.name} <IoMdArrowDropdown className="dropdown-arrow" />
+            </Link>
+            <ul className="dropdown-menu">
+              {item.dropdown.map((subItem, subIndex) => (
+                <li key={subIndex} className="dropdown-item lowercase">
+                  <Link to={subItem.route}>{subItem.name}</Link>
+                </li>
+              ))}
+            </ul>
           </li>
-          {menuItems.map((item, index) => (
-            <li key={index} className="navbar-item dropdown border-black border-l-2">
-              <Link to="/aboutus" className="dropdown-link">
-                {item.name} <IoMdArrowDropdown className="dropdown-arrow" />
-              </Link>
-              <ul className="dropdown-menu">
-                {item.dropdown.map((subItem, subIndex) => (
-                  <li key={subIndex} className="dropdown-item lowercase">
-                    {typeof subItem === "string" ? (
-                      <Link to="/aboutus">{subItem}</Link>
-                    ) : (
-                      <>
-                        <Link to="/aboutus" className="nested-dropdown-link">
-                          {subItem.name} <IoMdArrowDropdown className="dropleft-arrow" />
-                        </Link>
-                        <ul className="nested-dropdown-menu">
-                          {subItem.nestedDropdown.map((nestedItem, nestedIndex) => (
-                            <li key={nestedIndex} className="dropdown-item ">
-                              {typeof nestedItem === "string" ? (
-                                <Link to="/aboutus">{nestedItem}</Link>
-                              ) : (
-                                <>
-                                  <Link to="/aboutus" className="nested-dropdown-link">
-                                    {nestedItem.name} <IoMdArrowDropdown className="dropleft-arrow" />
-                                  </Link>
-                                  <ul className="nested-dropdown-menu">
-                                    {nestedItem.nestedDropdown &&
-                                      nestedItem.nestedDropdown.map((deepNestedItem, deepNestedIndex) => (
-                                        <li key={deepNestedIndex} className="dropdown-item">
-                                          <Link to="/aboutus">{deepNestedItem}</Link>
-                                        </li>
-                                      ))}
-                                  </ul>
-                                </>
-                              )}
-                            </li>
-                          ))}
-                        </ul>
-                      </>
-                    )}
-                  </li>
-                ))}
-              </ul>
-            </li>
-          ))}
-          <li className="navbar-item">
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
-      </nav>
-    </>
+        ))}
+        <li className="navbar-item">
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 
