@@ -7,5 +7,8 @@ export default defineConfig({
     fs: {
       allow: ['.'] // Allow root directory
     }
-  }
+  },
+  optimizeDeps: {
+    exclude: ['pdfjs-dist'], // Exclude pdfjs-dist from optimization
+  },
 });

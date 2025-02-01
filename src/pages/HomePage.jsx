@@ -4,16 +4,18 @@ import NewsHead from '../components/home/NewsHead'
 import Section from '../components/section/Section'
 import LogoSlider from '../components/slider/LogoSlider'
 import Layout from '../components/layout/Layout'
+import Gallery from '../components/home/Gallery'
 
 
 
 const HomePage = () => {
   return (
     <Layout>
-          <div className=' md:flex-col '>
+          <div>            
            <Slider/>
            <NewsHead/>
            <Section/>
+           <Gallery/>
            <LogoSlider/>
           </div>
     </Layout>

@@ -9,9 +9,10 @@ const Slider = () => {
   // Fetch banners from backend
   const fetchBanners = async () => {
     try {
-      const res = await axiosInstance.get('/banner/banners'); // Fetch banners from API
-      setBanners(res.data);
-      // console.log("Fetched banners:", res.data);
+      const res = await axiosInstance.get('/banners'); // Fetch banners from API
+      // Filter banners to only include those that are visible
+      const visibleBanners = res.data.filter((banner) => banner.IsVisible);
+      setBanners(visibleBanners);
     } catch (error) {
       console.error(error);
     }
@@ -57,13 +58,13 @@ const Slider = () => {
         }}
       >
         {/* Render slides */}
-        {banners.map((banner, index) => (
+        {banners.map((banner) => (
           <div key={banner.id} className="min-w-full text-center">
             {/* Image */}
             <img
               src={banner.bannerUrl} 
               alt={banner.bannerName} 
-              className="w-full h-[464px] object-cover "
+              className="w-full h-[464px] object-fit "
             />
             {/* Slide Message */}
             <div className="bg-blue-800 p-3 shadow-md text-center">

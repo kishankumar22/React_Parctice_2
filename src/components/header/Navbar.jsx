@@ -63,6 +63,7 @@ const Navbar = () => {
       name: "Campus & Facilities",
       route: "/campus",
       dropdown: [
+        { name: "Gallery", route: "/campus/gallary" },
         { name: "Library", route: "/campus/library" },
         { name: "Hostels", route: "/campus/hostels" },
         { name: "Sports", route: "/campus/sports" },

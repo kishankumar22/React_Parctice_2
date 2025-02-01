@@ -5,14 +5,12 @@ import AboutUsPage from './pages/AboutUsPage';
 import AcademicsPage from './pages/AcademicsPage';
 import RegistrationForm from './pages/RegistrationForm';
 import ContactPage from './pages/ContactPage';
-import Header from './components/header/Navbar';
-import Footer from './components/footer/Footer';
-
+import PdfPage from './components/header/PdfPage';
+import Gallery from './components/home/Gallery';
 
 function App() {
   return (
-    <Router >
-
+    <Router>
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
@@ -20,8 +18,11 @@ function App() {
         <Route path="/academics" element={<AcademicsPage />} />
         <Route path="/registration" element={<RegistrationForm />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/pdfpage" element={<PdfPage />} />
+        <Route path="/campus/gallary" element={<Gallery />} />
       </Routes>
-   </Router>
+      {/* <Footer /> */}
+    </Router>
   );
 }
 

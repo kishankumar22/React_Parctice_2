@@ -63,7 +63,7 @@ const NotificationCircular = () => {
             <div
               key={notification.id}
               className="h-16 border-yellow-500 rounded bg-white"
-            >
+            > 
               <div className="text-sky-500 px-12 pb-0.5 text-sm sm:text-xs">
                 <b className="font-semibold text-black">Date uploaded:</b> {new Date(notification.created_on).toLocaleDateString('en-GB')}
               </div>
