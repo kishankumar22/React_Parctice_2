@@ -60,7 +60,7 @@ const LogoSlider = () => {
   return (
     <div className="flex flex-col p-2 justify-center w-full bg-white">
       {/* Slider Title */}
-      <h1 className="text-center text-2xl font-bold">LINKS</h1>
+      <h1 className="text-center text-3xl p-2 font-bold text-blue-900">LINKS</h1>
 
       {/* Logo Slider */}
       <div className="overflow-hidden p-2 rounded-sm w-full">
