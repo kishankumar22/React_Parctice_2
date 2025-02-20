@@ -36,18 +36,18 @@ const NewsHead = () => {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center text-sm sm:text-base md:text-lg"
+                className="flex items-center text-xs sm:text-sm md:text-base lg:text-lg hover:text-blue-600 transition duration-200"
               >
                 {item.title}
-                <img className="h-4 sm:h-2 ml-2" src={news} alt="news" />
+                <img className="h-4 sm:h-5 ml-2" src={news} alt="news" />
               </a>
             ) : (
               <Link
                 to={item.url}
-                className="flex items-center text-sm sm:text-base md:text-lg"
+                className="flex items-center text-xs sm:text-sm md:text-base lg:text-lg hover:text-blue-600 transition duration-200"
               >
                 {item.title}
-                <img className="h-4 sm:h-2 ml-2" src={news} alt="news" />
+                <img className="h-4 sm:h-5 ml-2" src={news} alt="news" />
               </Link>
             )}
           </li>

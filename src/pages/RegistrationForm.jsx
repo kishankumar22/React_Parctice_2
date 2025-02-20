@@ -65,7 +65,12 @@ const RegistrationForm = () => {
   return (
     <Layout>
       <form onSubmit={handleSubmit} className="max-w-screen-xl mx-auto px-12 py-8 bg-white rounded">
-        <h2 className="text-2xl font-bold mb-4 text-center">Registration Form</h2>
+        {/* <h2 className="text-2xl font-bold mb-4 text-center"></h2> */}
+        <div className='bg-gray-200 h-8 mx-64 uppercase -mt-4 mb-6 flex items-center justify-center shadow-md'>
+              <h1 className="text-xl text-center font-bold text-white bg-blue-900 rounded-lg p-2 shadow-lg">
+                Registration Form
+              </h1>
+            </div>
 
         <div className="grid grid-cols-2 gap-4 mb-4">
           <div>

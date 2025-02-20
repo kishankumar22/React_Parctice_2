@@ -11,15 +11,17 @@ export const theme = {
       'kesariya': '#b75906',
       'links_colors': '#ececec',
     },
-    height:{
-      'heightsec':'477px',
+    height: {
+      'heightsec': '477px',
     },
     animation: {
-      marquee: "marquee 10s linear infinite",
+      marquee: "marquee 25s linear infinite",
     },
     fontFamily: {
-      roboto: ['Roboto', 'sans-serif'], // Add Roboto font
+      roboto: ['Roboto', 'sans-serif'], 
+      helvetica: ['Oswald', 'arial', 'Georgia', 'serif']
     },
+    
     keyframes: {
       marquee: {
         '0%': { transform: 'translateY(100%)' },

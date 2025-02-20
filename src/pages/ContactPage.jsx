@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import Layout from"../components/layout/Layout"
-import ddu from "../assets/logo/DDU_Campus.png";
+import Layout from "../components/layout/Layout";
+import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaGlobe } from "react-icons/fa"; // Importing icons
 
 const ContactPage = () => {
-
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,8 +22,8 @@ const ContactPage = () => {
     e.preventDefault();
     // Handle form submission logic (e.g., send data to a server)
     console.log(formData);
-     // Reset form data to initial state
-     setFormData({
+    // Reset form data to initial state
+    setFormData({
       name: "",
       email: "",
       phone: "",
@@ -33,220 +31,210 @@ const ContactPage = () => {
       city: "",
       country: "",
       message: "",
-  });
+    });
   };
+
   return (
     <Layout>
-    <div className="border border-gray-200 m-6 rounded-md shadow-md shadow-gray-400 ">
-      <div className="flex ">
-         {/* Left Side: Contact Form */}
-      <div className="w-1/2  flex p-4 ">
-      <div className="w-full ml-3  h-96 border-2 border-gray-300 rounded-md ">
-      <iframe
-    title="University Location"
-    src="https://www.google.com/maps/embed/v1/place?q=Deen%20Dayal%20Upadhyaya%20Gorakhpur%20University%2C%20Civil%20Lines%2C%20Gorakhpur%20(U.P.)%20-%20273009%20%5B%20INDIA%20%5D&key=AIzaSyBEIqDhk4kpJH8s0RmyaZ7jW1wmDr00bdU"
-    width="100%"
-    height="100%"
-    frameBorder="0"
-    style={{ border: 0 }}
-    allowFullScreen=""
-    aria-hidden="false"
-    tabIndex="0"
-></iframe>
-      </div>
-      </div>
-
-      {/* Right Side: Contact Details */}
-      <div className="w-1/2 p-4">
-      <p className="text-2xl font-bold w-full text-gray-700 mb-4">
-        <strong className="text-blue-900 font-bold w-full border-blue-800 border-b-2 pb-2">Deen Dayal Upadhyaya Gorakhpur University</strong>
-       </p> 
-       <div className="w-32 h-1 ml-0 bg-blue-800 -mt-3"></div>
-       <p className="mt-4"> Civil Lines, Gorakhpur (U.P.) - 273009 [ INDIA ]
-        </p>
-      
-
-      {/* Phone Numbers */}
-      <div className="mt-3">
-            <i className="fas fa-phone-alt text-black mr-2"></i>
-        <strong className="text-sm font-normal">Phone Number(s):</strong>
-        <ul className="mt-2">
-          <li className="flex items-center">
-            <strong>Vice Chancellor:</strong> +91-551-2201577 (O), 2340458 (R)
-          </li>
-          <li className="flex items-center ">
-            <strong>Registrar:</strong> +91-551-2340363 (O)
-          </li>
-          <li className="flex items-center">
-            <strong>Inquiry Telephone Number:</strong> 0551-2203098
-          </li>
-        </ul>
-      </div>
-
-      {/* Fax Numbers */}
-      <div className="mt-3">
-        <strong className="text-sm font-normal"> 
-          <i className="fas fa-fax text-gray-600  mr-2"></i>Fax Number(s):</strong>
-        <ul className="mt-2">
-          <li className="flex items-center">
-            <strong>V.C. Office:</strong> +91-551-2330767
-          </li>
-          <li className="flex items-center">
-            <strong>Registrar Office:</strong> +91-551-2340363
-          </li>
-        </ul>
-      </div>
-
-      {/* Email Address */}
-      <div className="mt-3">
-        <strong className="text-sm font-normal">  <i className="fas fa-envelope text-black mr-2"></i>E-Mail Address:</strong>
-        <div className="flex items-center">
-        
-          <p className="text-blue-500 font-light">registrarddugu@gmail.com</p>
+      <div className="container mx-auto p-8">
+        <div className='bg-gray-200 h-8 mx-48 flex items-center justify-center shadow-md'>
+          <h1 className="text-xl text-center font-semibold uppercase text-white bg-blue-900 rounded-lg p-2 shadow-lg">
+            Contact Details
+          </h1>
         </div>
-      </div>
-    </div> 
+        <div className="flex flex-col md:flex-row">
+          {/* Left Column (col-7) - Feedback Form */}
+          <div className="md:w-7/12 p-2  flex flex-col">
+            <p className="pt-4 text-sm">
+              Our customer support and account management team provide the best service. We are passionate about our service as well as our customers, and it shows in the level of service that we provide. We're always happy to help find the solution for your needs. If a solution does not already exist, we'll create a new solution that resolves your issue.
+            </p>
+            <div className="w-full flex-grow">
+              <form onSubmit={handleSubmit} className="pt-4">
+                <div className="grid p-2 grid-cols-1 md:grid-cols-2 gap-x-8">
+                  {/* Left Column */}
+                  <div className="flex flex-col ">
+                    <label htmlFor="name" className="text-sm font-semibold mb-2">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="p-2 border border-gray-300 rounded-md text-sm"
+                      placeholder="Your Name"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="email" className="text-sm font-semibold mb-2">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="p-2 border border-gray-300 rounded-md text-sm"
+                      placeholder="Your Email"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="phone" className="text-sm font-semibold mb-2">
+                      Phone
+                    </label>
+                    <input
+                      type="text"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleInputChange}
+                      className="p-2 border border-gray-300 rounded-md text-sm"
+                      placeholder="Your Phone Number"
+                      required
+                    />
+                  </div>
 
-      </div>
-      {/* end here  */}
-      <div className="mt-3 p-2">
-        <img src={ddu} alt="" srcset="" />
-      </div>
-      <div>
+                  {/* Right Column */}
+                  <div className="flex flex-col ">
+                    <label htmlFor="address" className="text-sm font-semibold mb-2">
+                      Address
+                    </label>
+                    <input
+                      type="text"
+                      id="address"
+                      name="address"
+                      value={formData.address}
+                      onChange={handleInputChange}
+                      className="p-2 border border-gray-300 rounded-md text-sm"
+                      placeholder="Your Address"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="city" className="text-sm font-semibold mb-2">
+                      City
+                    </label>
+                    <input
+                      type="text"
+                      id="city"
+                      name="city"
+                      value={formData.city}
+                      onChange={handleInputChange}
+                      className="p-2 border border-gray-300 rounded-md text-sm"
+                      placeholder="Your City"
+                      required
+                    />
+                  </div>
+                  <div className="flex flex-col">
+                    <label htmlFor="country" className="text-sm font-semibold mb-2">
+                      Country
+                    </label>
+                    <input
+                      type="text"
+                      id="country"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      className="p-2 border border-gray-300 rounded-md text-sm"
+                      placeholder="Your Country"
+                      required
+                    />
+                  </div>
 
-      <div className="w-full p-4   ">
-      <h2 className="text-3xl font-normal text-blue-800 border-b-2 border-black border-dashed">Feedback Form</h2>
-      <form onSubmit={handleSubmit}className="pt-4">
-        <div className="grid p-2 grid-cols-1 md:grid-cols-2 gap-x-32">
-          {/* Left Column */}
-          <div className="flex flex-col ">
-            <label htmlFor="name" className="text-lg font-semibold mb-2">
-              Name
-            </label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              className="p-2 border  border-gray-300 rounded-md"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="email" className="text-lg font-semibold mb-2">
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              className="p-2 border border-gray-300 rounded-md"
-              placeholder="Your Email"
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="phone" className="text-lg font-semibold mb-2">
-              Phone
-            </label>
-            <input
-              type="text"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleInputChange}
-              className="p-2 border border-gray-300 rounded-md"
-              placeholder="Your Phone Number"
-              required
-            />
-          </div>
+                  {/* Message Field */}
+                  <div className="col-span-2 flex flex-col">
+                    <label htmlFor="message" className="text-sm font-semibold mb-2">
+                      Message
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      className="p-3 border w-full border-gray-300 rounded-md text-sm"
+                      placeholder="Your Message"
+                      required
+                    />
+                  </div>
 
-          {/* Right Column */}
-          <div className="flex flex-col ">
-            <label htmlFor="address" className="text-lg font-semibold mb-2">
-              Address
-            </label>
-            <input
-              type="text"
-              id="address"
-              name="address"
-              value={formData.address}
-              onChange={handleInputChange}
-              className="p-2 border border-gray-300 rounded-md"
-              placeholder="Your Address"
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="city" className="text-lg font-semibold mb-2">
-              City
-            </label>
-            <input
-              type="text"
-              id="city"
-              name="city"
-              value={formData.city}
-              onChange={handleInputChange}
-              className="p-2 border border-gray-300 rounded-md"
-              placeholder="Your City"
-              required
-            />
-          </div>
-          <div className="flex flex-col">
-            <label htmlFor="country" className="text-lg font-semibold mb-2">
-              Country
-            </label>
-            <input
-              type="text"
-              id="country"
-              name="country"
-              value={formData.country}
-              onChange={handleInputChange}
-              className="p-3 border border-gray-300 rounded-md"
-              placeholder="Your Country"
-              required
-            />
+                  {/* Submit Button */}
+                  <div className="col-span-2 flex justify-center mt-6">
+                    <button
+                      type="submit"
+                      className="w-64 h-10 bg-blue-800 text-white rounded-md font-semibold hover:bg-blue-600"
+                    >
+                      Send
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
 
-          {/* Message Field */}
-          <div className="col-span-2 flex flex-col">
-            <label htmlFor="message" className="text-lg font-semibold mb-2">
-              Message
-            </label>
-            <textarea
-              id="message"
-              name="message"
-              value={formData.message}
-              onChange={handleInputChange}
-              className="p-3 border w-2/4 border-gray-300 rounded-md"
-              placeholder="Your Message"
-        
-              required
-            />
-          </div>
-
-          {/* Submit Button */}
-          <div className="col-span-2 flex justify-center mt-6">
-            <button
-              type="submit"
-              className="w-64 h-10   bg-blue-800 text-white rounded-md font-semibold hover:bg-blue-600"
-            >
-              Send
-            </button>
+          {/* Right Column (col-5) - Contact Details */}
+          <div className="md:w-5/12 p-4 flex flex-col">
+            <div className="bg-blue-100 p-4 rounded-lg shadow-md flex-grow">
+              <h2 className="text-lg font-semibold bg-blue-900 text-center text-white rounded">Address Info</h2>
+              <p className="mt-2 flex items-center">
+                <FaMapMarkerAlt className="text-blue-500 mr-2" />
+                <strong>Address:</strong>
+              </p>
+              <p className="ml-6">
+                10 Km Stone Bulandshahr<br />
+                Khurja G.T. Road NH-91<br />
+                Village Agwal Near Railway Crossing<br />
+                Khurja Distt.<br />
+                Bulandshahr (U.P.)<br />
+                203131
+              </p>
+              <p className="mt-2 flex items-center">
+                <FaPhone className="text-blue-500 mr-2" />
+                <strong>Phone No:</strong>
+              </p>
+              <p className="ml-6">
+                +91-5738-244213<br />
+                +91-07351220007
+              </p>
+              <p className="mt-2 flex items-center">
+                <FaEnvelope className="text-blue-500 mr-2" />
+                <strong>Email Id:</strong>
+              </p>
+              <p className="ml-6">
+                <a href="mailto:info@jkiop.org" className="text-blue-500 text-sm">info@jkiop.org</a>
+              </p>
+              <p className="mt-2 flex items-center">
+                <FaGlobe className="text-blue-500 mr-2" />
+                <strong>Website:</strong>
+              </p>
+              <p className="ml-6">
+                <a href="http://www.jkiop.org" className="text-blue-500 text-sm">www.jkiop.org</a>
+              </p>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+        {/* Google Maps iframe */}
+        <div className="">
+          <div className='bg-gray-200 h-8 mx-48 flex items-center justify-center shadow-md'>
+ <h1 className="text-lg text-center font-bold uppercase text-white bg-blue-900 rounded-lg p-2 md:text-sm shadow-lg">
+              Map of JK Institute Of Pharmacy
+            </h1>
+          </div>
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509198!2d77.123456!3d28.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390c123456789abc%3A0x1234567890abcdef!2sJK%20Institute%20Of%20Pharmacy!5e0!3m2!1sen!2sin!4v1234567890123"
+            width="100%"
+            height="450"
+            className="mt-8"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
       </div>
-     
-
-    
-     </div>
-     </Layout>
+    </Layout>
   );
 };
 

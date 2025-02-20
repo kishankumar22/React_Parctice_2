@@ -50,70 +50,74 @@ const Gallery = () => {
 
   return (
     <>
-    <div className='bg-gray-100 p-2'>
-      <h1 className='pt-2 text-4xl text-center font-bold text-blue-800'>Gallery</h1>
-      <div className="grid grid-cols-5 gap-6 p-2 my-4 mx-12">
-        {galleries.map((gallery, index) => (
-          <div key={gallery.id} className="text-center">
-            {gallery.type === 'video' ? (
-              <video
-                src={gallery.galleryUrl}
-                className="w-64 h-44 object-fit rounded-md cursor-pointer"
-                onClick={() => openModal(index)}
-              />
-            ) : (
-              <img
-                src={gallery.galleryUrl}
-                alt={gallery.galleryName}
-                className="w-64 h-44 object-fit rounded-md cursor-pointer"
-                onClick={() => openModal(index)}
-              />
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* Fullscreen Modal */}
-      {isOpen && currentMedia && (
-        <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-          <button
-            className="absolute top-4 right-6 text-white text-3xl"
-            onClick={closeModal}
-          >
-            ✖
-          </button>
-          <button
-            className="absolute left-6 text-white text-3xl"
-            onClick={prevMedia}
-          >
-            ◀
-          </button>
-          <button
-            className="absolute right-6 text-white text-3xl"
-            onClick={nextMedia}
-          >
-            ▶
-          </button>
-
-          <div className="max-w-screen-lg mx-auto">
-            {currentMedia.type === 'video' ? (
-              <video
-                src={currentMedia.galleryUrl}
-                controls
-                className="w-full max-h-[90vh] rounded-md"
-              />
-            ) : (
-              <img
-                src={currentMedia.galleryUrl}
-                alt={currentMedia.galleryName}
-                className="w-full h-full object-fit rounded-md"
-              />
-            )}
-          </div>
+      <div className='bg-gray-100 p-2'>
+      <div className='bg-gray-200 mt-2 h-8 mx-64 flex items-center justify-center shadow-md'>
+              <h1 className="text-xl text-center font-bold uppercase text-white bg-blue-900 rounded-lg p-2 shadow-lg">
+                Gallery
+              </h1>
+            </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-2 my-4 mx-2">
+          {galleries.map((gallery, index) => (
+            <div key={gallery.id} className="text-center">
+              {gallery.type === 'video' ? (
+                <video
+                  src={gallery.galleryUrl}
+                  className="w-full h-44 object-cover rounded-md cursor-pointer"
+                  onClick={() => openModal(index)}
+                />
+              ) : (
+                <img
+                  src={gallery.galleryUrl}
+                  alt={gallery.galleryName}
+                  className="w-full h-44 object-cover rounded-md cursor-pointer"
+                  onClick={() => openModal(index)}
+                />
+              )}
+            </div>
+          ))}
         </div>
-      )}
+
+        {/* Fullscreen Modal */}
+        {isOpen && currentMedia && (
+          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
+            <button
+              className="absolute top-4 right-6 text-white text-3xl"
+              onClick={closeModal}
+            >
+              ✖
+            </button>
+            <button
+              className="absolute left-6 text-white text-3xl"
+              onClick={prevMedia}
+            >
+              ◀
+            </button>
+            <button
+              className="absolute right-6 text-white text-3xl"
+              onClick={nextMedia}
+            >
+              ▶
+            </button>
+
+            <div className="max-w-screen-lg mx-auto">
+              {currentMedia.type === 'video' ? (
+                <video
+                  src={currentMedia.galleryUrl}
+                  controls
+                  className="w-full max-h-[90vh] rounded-md"
+                />
+              ) : (
+                <img
+                  src={currentMedia.galleryUrl}
+                  alt={currentMedia.galleryName}
+                  className="w-full h-full object-contain rounded-md"
+                />
+              )}
+            </div>
+          </div>
+        )}
       </div>
-      </>
+    </>
   );
 };
 

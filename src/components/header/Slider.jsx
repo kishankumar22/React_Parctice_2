@@ -64,11 +64,11 @@ const Slider = () => {
             <img
               src={banner.bannerUrl} 
               alt={banner.bannerName} 
-              className="w-full h-[464px] object-fit "
+              className="w-full h-auto max-h-[464px] object-cover" // Use object-cover for better responsiveness
             />
             {/* Slide Message */}
             <div className="bg-blue-800 p-3 shadow-md text-center">
-              <p className="text-white">{banner.bannerName}</p> {/* Display banner name */}
+              <p className="text-white text-sm md:text-lg">{banner.bannerName}</p> {/* Display banner name */}
             </div>
           </div>
         ))}

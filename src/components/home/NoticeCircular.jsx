@@ -14,7 +14,7 @@ const NotificationCircular = () => {
       try {
         const response = await axiosInstance.get('/notifications/all-notification');
         setNotifications([...response.data, ...response.data, ...response.data]); // Duplicate array for smoother infinite scrolling
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }

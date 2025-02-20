@@ -13,7 +13,7 @@ const LatestNews = () => {
       try {
         const response = await axiosInstance.get('/notifications/all-notification');
         setNotifications(response.data); // Assuming the response data is an array of notifications
-        console.log(response.data); // Log notifications to the console
+        //console.log(response.data); // Log notifications to the console
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }

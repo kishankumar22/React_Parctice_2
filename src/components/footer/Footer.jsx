@@ -1,140 +1,105 @@
+// src/components/Footer.tsx
 import React from "react";
 import { Link } from "react-router-dom";
-import logo1 from "../../assets/logo/logo3.png"; // Replace with your logo
+import logo1 from "../../assets/logo/logo.jpg"; // Replace with your logo
 import { FaChevronRight } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <>
-      <footer className="md:flex-col flex-wrap">
-        <div className="flex row justify-center bg-black h-48">
-          <div className="col-sm-12 pr-2">
-            <img
-              src={logo1}
-              alt="University Logo"
-              className="w-24 h-24 pt-3 rounded-full"
-            />
+    <footer className="bg-blue-950 text-white text-xs">
+      <div className="container mx-auto px-6 py-10">
+        {/* Footer Layout - Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-[auto,1fr,1fr,1fr,1fr] gap-4 md:gap-6 items-start">
+          {/* Logo (Fixed Size) */}
+          <div className="flex justify-center md:justify-start w-full md:w-24">
+            <a href="/">
+            <img src={logo1} alt="University Logo" className="w-24 h-24 object-fill rounded-full" />
+
+            </a>
           </div>
-          <div className="col-sm-4 m-3 p-2 leading-4 font-bold text-white">
-            <p className="text-xl font-normal leading-relaxed">
-              दीनदयाल उपाध्याय गोरखपुर विश्‍वविद्यालय
-            </p>
-            <p className="text-sm leading-8">
-              Deen Dayal Upadhyaya Gorakhpur University
-            </p>
-            <p className="font-medium leading-8">
-              सिविल लाइंस, गोरखपुर - 273009, उत्तर प्रदेश (भारत)
-            </p>
-            <p className="text-sm font-medium leading-8">
-              Civil Lines, Gorakhpur - 273009, Uttar Pradesh (INDIA)
+
+          {/* Institute Info */}
+          <div>
+            <h2 className="font-semibold font-roboto  border-gray-400 border-b-4 pb-1 mb-2 text-sm">
+              JK INSTITUTES OF PHARMACY
+            </h2>
+            <p className="leading-normal text-[13px]">
+              JK Institute Of Pharmacy is a non-profit, quality-conscious and trend-setting institute with a focus on providing equal opportunities for all.
             </p>
           </div>
 
           {/* Quick Links */}
-          <div className="w-full p-2 md:w-1/5 text-white mb-6 md:mb-0">
-            <h1 className="font-bold border-b-2 pb-2 mb-2">Quick Links</h1>
+          <div>
+            <h1 className="font-semibold font-roboto border-gray-400 border-b-4 pb-1 mb-2 text-sm">
+              QUICK LINKS
+            </h1>
             <ul>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <Link to="/results" className="hover:text-gray-300">
-                  Result
-                </Link>
-              </li>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <Link to="/tenders" className="hover:text-gray-300">
-                  Tenders
-                </Link>
-              </li>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <Link to="/contact-us" className="hover:text-gray-300">
-                  Contact Us
-                </Link>
-              </li>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <Link to="/rti" className="hover:text-gray-300">
-                  RTI
-                </Link>
-              </li>
+              {[
+                { name: "Registration", path: "/registration" },
+                { name: "About Us", path: "/aboutus" },
+                { name: "Gallery", path: "/campus/gallaryPage" },
+                { name: "Contact Us", path: "/contact" },
+              ].map((item, index) => (
+                <li key={index} className="flex items-center p-2 text-[13px] hover:text-gray-300 transition duration-200">
+                  <FaChevronRight className="mr-1 text-yellow-400 text-xs" />
+                  <Link to={item.path}>{item.name}</Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Co-Curricular */}
-          <div className="w-full p-2 md:w-1/5 text-white mb-6 md:mb-0">
-            <h1 className="font-bold border-b-2 pb-2 mb-2">Co-Curricular</h1>
-            <ul>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <Link to="/sports" className="hover:text-gray-300">
-                  Sports
-                </Link>
-              </li>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <Link to="/ncc" className="hover:text-gray-300">
-                  NCC
-                </Link>
-              </li>
-            </ul>
+          {/* Contact Information */}
+          <div>
+            <h1 className="font-semibold font-roboto border-gray-400 border-b-4 pb-1 mb-2 text-sm">
+              CONTACT INFORMATION
+            </h1>
+            <p className="leading-snug text-[13px]">
+              10 Km Stone Bulandshahr –Khurja G.T. Road NH-91, Village Agwal Near Railway Crossing, Khurja Distt. Bulandshahr, (U.P.), 203131
+            </p>
+            <p className="mt-2">
+              <strong>Phone:</strong> +91-5738-244213 <br />
+              <strong>Mobile:</strong> +91-07351220007 <br />
+              <strong>Email:</strong> info@jkiop.org
+            </p>
           </div>
 
           {/* Important Links */}
-          <div className="w-full p-2 md:w-1/5 text-white mb-6 md:mb-0">
-            <h1 className="font-bold border-b-2 pb-2 mb-2">Important Links</h1>
+          <div>
+            <h1 className="font-semibold font-roboto border-gray-400 border-b-4 pb-1 mb-2 text-sm">
+              IMPORTANT LINKS
+            </h1>
             <ul>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <a
-                  href="https://www.education.gov.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-300"
-                >
-                  MHRD
-                </a>
-              </li>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <a
-                  href="https://www.aiu.ac.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-300"
-                >
-                  AIU
-                </a>
-              </li>
-              <li className="flex items-center p-1">
-                <FaChevronRight className="mr-2" />
-                <a
-                  href="https://www.ncte.gov.in"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-gray-300"
-                >
-                  NCTE
-                </a>
-              </li>
+              {[
+                { name: "AICTE", url: "https://www.aicte-india.org/" },
+                { name: "PCI", url: "https://pci.nic.in/" },
+                { name: "BTE", url: "https://bteup.ac.in/" },
+              ].map((item, index) => (
+                <li key={index} className="flex items-center p-2 text-[13px] hover:text-gray-300 transition duration-200">
+                  <FaChevronRight className="mr-1 text-yellow-400 text-xs" />
+                  <a href={item.url} target="_blank" rel="noopener noreferrer">
+                    {item.name}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        <div className="flex justify-between bg-black text-yellow p-3">
+        {/* Footer Bottom */}
+      </div>
+        <div className="flex flex-col md:flex-row justify-between bg-gray-900 text-yellow-400 px-6 md:px-10 py-3 mt-4 text-xs text-center md:text-left">
           <p>
-            <a href="#" className="hover:text-gray-300">
-              Copyright © Deen Dayal Upadhyaya Gorakhpur University.
+            <a href="https://jkiop.org/" className="hover:text-gray-300">
+              Copyright © 2022 JK Institute Of Pharmacy
             </a>
           </p>
           <p>
-            <a href="#" className="hover:text-gray-300">
-              Your Visitor Number : Web Analytics
+            <a href="https://www.mezzex.com/" target="_blank" className="hover:text-gray-300">
+              Developed by Mezzex
             </a>
           </p>
         </div>
-      </footer>
-    </>
+    </footer>
   );
 };
 

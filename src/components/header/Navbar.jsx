@@ -1,146 +1,101 @@
-import React from "react";
-import { IoMdArrowDropdown } from "react-icons/io";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   const menuItems = [
-    {
-      name: "About Us",
-      route: "/aboutus",
-      dropdown: [
-        {
-          name: "Introduction",
-          route: "/aboutus",
-          nestedDropdown: [
-            { name: "Chancellor", route: "/aboutus/chancellor" },
-            { name: "Vice Chancellor", route: "/aboutus/vice-chancellor" },
-            { name: "Finance Officer", route: "/aboutus/finance-officer" },
-            {
-              name: "Registrar",
-              route: "/aboutus/registrar",
-              nestedDropdown: [
-                { name: "Academic Calendar", route: "/aboutus/academic-calendar" },
-                { name: "List of Faculty Members", route: "/aboutus/faculty-members" },
-                { name: "Programmes Offered", route: "/aboutus/programmes-offered" },
-                { name: "Courses, Syllabi", route: "/aboutus/courses-syllabi" },
-                { name: "Time Table", route: "/aboutus/time-table" },
-              ],
-            },
-            { name: "Deans of Faculties", route: "/aboutus/deans" },
-            { name: "Dean of Students' Welfare", route: "/aboutus/dean-students-welfare" },
-          ],
-        },
-        { name: "Mission & Vision", route: "/aboutus/mission-vision" },
-        { name: "Leadership", route: "/aboutus/leadership" },
-        { name: "Alumni", route: "/aboutus/alumni" },
-        { name: "Accreditation", route: "/aboutus/accreditation" },
-      ],
-    },
-    {
-      name: "Academics",
-      route: "/academics",
-      dropdown: [
-        { name: "Programs Offered", route: "/academics/programs-offered" },
-        { name: "Departments", route: "/academics/departments" },
-        { name: "Curriculum", route: "/academics/curriculum" },
-        { name: "Faculty", route: "/academics/faculty" },
-        { name: "Academic Calendar", route: "/academics/academic-calendar" },
-      ],
-    },
-    {
-      name: "Research",
-      route: "/research",
-      dropdown: [
-        { name: "Research Areas", route: "/research/areas" },
-        { name: "Publications", route: "/research/publications" },
-        { name: "Collaborations", route: "/research/collaborations" },
-        { name: "Grants", route: "/research/grants" },
-        { name: "Research Centers", route: "/research/centers" },
-      ],
-    },
-    {
-      name: "Campus & Facilities",
-      route: "/campus",
-      dropdown: [
-        { name: "Gallery", route: "/campus/gallary" },
-        { name: "Library", route: "/campus/library" },
-        { name: "Hostels", route: "/campus/hostels" },
-        { name: "Sports", route: "/campus/sports" },
-        { name: "IT Services", route: "/campus/it-services" },
-        { name: "Transport", route: "/campus/transport" },
-      ],
-    },
-    {
-      name: "Admission",
-      route: "/admission",
-      dropdown: [
-        { name: "Undergraduate", route: "/admission/undergraduate" },
-        { name: "Postgraduate", route: "/admission/postgraduate" },
-        { name: "PhD", route: "/admission/phd" },
-        { name: "International Students", route: "/admission/international" },
-        { name: "FAQs", route: "/admission/faqs" },
-      ],
-    },
-    {
-      name: "Examination",
-      route: "/examination",
-      dropdown: [
-        { name: "Exam Schedule", route: "/examination/schedule" },
-        { name: "Results", route: "/examination/results" },
-        { name: "Revaluation", route: "/examination/revaluation" },
-        { name: "Exam Guidelines", route: "/examination/guidelines" },
-        { name: "Online Exam Portal", route: "/examination/portal" },
-      ],
-    },
-    {
-      name: "Media",
-      route: "/media",
-      dropdown: [
-        { name: "News", route: "/media/news" },
-        { name: "Events", route: "/media/events" },
-        { name: "Photo Gallery", route: "/media/photo-gallery" },
-        { name: "Videos", route: "/media/videos" },
-        { name: "Press Releases", route: "/media/press-releases" },
-      ],
-    },
-    {
-      name: "Login & Portals",
-      route: "/login-portals",
-      dropdown: [
-        { name: "Student Registration", route: "/registration" }, // Updated route
-        { name: "Faculty Portal", route: "/login-portals/faculty-portal" },
-        { name: "Admin Portal", route: "/login-portals/admin-portal" },
-        { name: "Alumni Portal", route: "/login-portals/alumni-portal" },
-        { name: "Parent Portal", route: "/login-portals/parent-portal" },
-      ],
-    },
+    { name: "About Us", route: "/aboutus" },
+    { name: "Courses", route: "/courses" },
+    { name: "Registration", route: "/registration" },
+    { name: "Admission", route: "/admission-process" },
+    { name: "Placement", route: "/placement" },
+    { name: "Faculty", route: "/faculity" },
+    { name: "Infrastructure", route: "/infrastructure" },
+    { name: "Facilities", route: "/facilities" },
+    { name: "Career", route: "/career" },
+    { name: "SIF", route: "https://jkiop.org/images/SIF-A(SIF-D1-Pharm).pdf", external: true }, // Mark as external
+    { name: "Misc", route: "/misc" },
+    { name: "Gallery", route: "/campus/gallaryPage" },
+    { name: "Contact", route: "/contact" },
+    { name: "Login & Portals", route: "/login" },
   ];
 
   return (
-    <nav className="navbar">
-      <ul className="navbar-list text-base font-normal uppercase">
-        <li className="navbar-item active">
-          <Link to="/">Home</Link>
-        </li>
-        {menuItems.map((item, index) => (
-          <li key={index} className="navbar-item dropdown border-black border-l-2">
-            <Link to={item.route} className="dropdown-link">
-              {item.name} <IoMdArrowDropdown className="dropdown-arrow" />
-            </Link>
-            <ul className="dropdown-menu">
-              {item.dropdown.map((subItem, subIndex) => (
-                <li key={subIndex} className="dropdown-item lowercase">
-                  <Link to={subItem.route}>{subItem.name}</Link>
-                </li>
-              ))}
-            </ul>
+    <nav className="bg-blue-900 w-full z-50 h-10 flex items-center shadow-md">
+      <div className="container mx-auto px-2 flex justify-between items-center relative">
+        {/* Hamburger Button (Mobile) */}
+        <button className="md:hidden text-white text-lg relative z-50" onClick={toggleMenu}>
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+
+        {/* Desktop Menu */}
+        <ul className="hidden md:flex flex-nowrap justify-center items-center text-white text-[12px] font-semibold font-roboto uppercase">
+          <li
+            className={`h-10 w-full p-2 hover:bg-blue-600 flex justify-center align-middle border-r-2 border-black group transition-all duration-300 ${location.pathname === "/" ? "bg-red-500" : ""
+              }`}
+          >
+            <Link to="/" className="py-1">Home</Link>
           </li>
-        ))}
-        <li className="navbar-item">
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
+          {menuItems.map((item, index) => (
+            <li
+              key={index}
+              className={`p-2 hover:bg-blue-600 h-10 flex justify-center align-middle border-r-2 border-black group transition-all duration-300 whitespace-nowrap last:border-0 ${location.pathname === item.route ? "bg-red-500" : ""
+                }`}
+            >
+              {item.external ? (
+                <a href={item.route} target="_blank" rel="noopener noreferrer" className="group-hover:text-yellow-500 py-1 rounded">
+                  {item.name}
+                </a>
+              ) : (
+                <Link to={item.route} className="group-hover:text-yellow-500 py-1 rounded">
+                  {item.name}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ul>
+
+        {/* Mobile Menu */}
+        <div
+          className={`absolute left-0 top-10 w-full bg-blue-900 shadow-lg transform transition-all duration-300 ease-in-out ${menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+            } overflow-hidden md:hidden`}
+        >
+          <ul className="space-y-2 text-center text-white text-sm font-light uppercase">
+            <li
+              className={`p-2 group rounded transition-all duration-300 ${location.pathname === "/" ? "bg-red-500" : ""
+                }`}
+            >
+              <Link to="/" onClick={toggleMenu} className="group-hover:bg-yellow-500 block p-2 rounded">
+                Home
+              </Link>
+            </li>
+            {menuItems.map((item, index) => (
+              <li
+                key={index}
+                className={`p-2 group rounded transition-all duration-300 whitespace-nowrap ${location.pathname === item.route ? "bg-red-500" : ""
+                  }`}
+              >
+                {item.external ? (
+                  <a href={item.route} target="_blank" rel="noopener noreferrer" onClick={toggleMenu} className="group-hover:bg-yellow-500 block p-2 rounded">
+                    {item.name}
+                  </a>
+                ) : (
+                  <Link to={item.route} onClick={toggleMenu} className="group-hover:bg-yellow-500 block p-2 rounded">
+                    {item.name}
+                  </Link>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
     </nav>
   );
 };

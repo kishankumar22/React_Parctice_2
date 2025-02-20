@@ -22,27 +22,34 @@ const Header = () => {
       {/* Center: Title */}
       <div className="flex-1">
         <h1 className=" lg:text-5xl ml-2 md:text-3xl font-bold text-blue-900">
-          JK Institute Of Pharmacy
+        <a href="/"> JK Institute Of Pharmacy</a>
         </h1>
       </div>
 
       {/* Right Side: Logos */}
       <div className="flex  flex-shrink-0 space-x-2">
+      <a href="https://www.aicte-india.org/" target="_blank">
         <img
           src={logo2} // Replace with your logo URL
-          alt="Logo 1"
+          alt="Aicte"
           className="h-24 w-24 object-cover my-2"
         />
+      </a>
+      <a href="https://pci.nic.in/" target="_blank">
         <img
           src={logo4} // Replace with your logo URL
-          alt="Logo 2"
+          alt="Pharmacy Council of India"
           className="h-24 w-24 object-cover my-2"
         />
+
+      </a>
+       <a href="https://bteup.ac.in/" target="_blank">
         <img
-          src={logo1} // Replace with your logo URL
-          alt="Logo 3"
-          className="h-24 w-24 object-cover my-2"
+          src={logo3} // Replace with your logo URL
+          alt="BOARD OF TECHNICAL EDUCATION"
+          className="h-24 w-24 object-fit my-2"
         />
+       </a>
       </div>
     </header>
     </>
