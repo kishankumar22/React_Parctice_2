@@ -6,8 +6,7 @@ const Placement = () => {
   return (
     <>
      <Layout>
-      <div className="container mx-auto p-4">
-
+      <div className="container mx-auto p-6">
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-8) */}
           <div className="md:w-8/12 p-2">
@@ -20,7 +19,7 @@ const Placement = () => {
            
           </div>
           {/* Right Column (col-4) */}
-          <div className="md:w-4/12 p-2">
+          <div className="md:w-4/12">
           <LatestPost/>
           </div>
         </div>

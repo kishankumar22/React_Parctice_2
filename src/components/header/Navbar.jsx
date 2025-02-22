@@ -24,7 +24,7 @@ const Navbar = () => {
     { name: "Misc", route: "/misc" },
     { name: "Gallery", route: "/campus/gallaryPage" },
     { name: "Contact", route: "/contact" },
-    { name: "Login & Portals", route: "/login" },
+    { name: "Login & Portals", route: "http://localhost:5173/auth/signin" , external: true},
   ];
 
   return (

@@ -27,14 +27,14 @@ const LatestPost = () => {
   return (
     <>
       {/* Header */}
-      <div className="mb-4 bg-gray-400 h-10 rounded-md flex items-center justify-center shadow-md">
-        <h1 className="text-xl text-center font-bold uppercase text-white bg-blue-900 rounded-md p-3 shadow-lg">
-          Latest Post
-        </h1>
-      </div>
+      <div className="mb-4 mt-2 bg-gray-200 h-8 flex items-center justify-center shadow-md">
+  <h1 className="text-lg sm:text-sm md:text-xl text-center font-bold uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    Latest Post
+  </h1>
+</div>
 
       {/* Marquee Container */}
-      <div className="relative overflow-hidden h-96 bg-gray-100">
+      <div className="relative overflow-hidden h-96">
         <div
           ref={marqueeRef}
           className="absolute inset-0 flex flex-col animate-marquee"
@@ -52,7 +52,7 @@ const LatestPost = () => {
           {posts.map((post) => (
             <div
               key={post.id}
-              className="border-b border-gray-500 p-4 text-center bg-white shadow-md transition-all duration-300 transform hover:scale-105 hover:bg-yellow-200 cursor-pointer"
+              className="p-2 text-center bg-white  transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
             >
               <a href="/">{post.title}</a>
               
@@ -62,10 +62,10 @@ const LatestPost = () => {
       </div>
 
       {/* Play/Pause Button */}
-      <div className="p-2 ">
+      <div className="p-1 text-center flex justify-between absolute top-64">
         <button
           onClick={togglePlayPause}
-          className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-all duration-300"
+          className="p-2 bg-blue-600  text-white rounded-full hover:bg-blue-500 transition-all duration-300"
         >
           {isPlaying ? <FaPause /> : <FaPlay />}
         </button>

@@ -6,7 +6,7 @@ import LatestPost from './LatestPost';
 const Career = () => {
   return (
     <Layout>
-      <div className="container mx-auto p-8">
+      <div className="container mx-auto p-6">
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-8) */}
           <div className="md:w-8/12 p-2">
@@ -19,8 +19,8 @@ const Career = () => {
           </div>
 
           {/* Right Column (col-4) */}
-          <div className="md:w-4/12 p-2">
-            <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+          <div className="md:w-4/12 ">
+            <div className="">
               <LatestPost />
               {/* Add more content here as needed */}
             </div>
