@@ -37,11 +37,11 @@ const ContactPage = () => {
   return (
     <Layout>
       <div className="container mx-auto p-8">
-        <div className='bg-gray-200 h-8 mx-48 flex items-center justify-center shadow-md'>
-          <h1 className="text-xl text-center font-semibold uppercase text-white bg-blue-900 rounded-lg p-2 shadow-lg">
-            Contact Details
-          </h1>
-        </div>
+      <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+  Contact Details
+  </h1>
+</div>
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-7) - Feedback Form */}
           <div className="md:w-7/12 p-2  flex flex-col">
@@ -218,11 +218,11 @@ const ContactPage = () => {
         </div>
         {/* Google Maps iframe */}
         <div className="">
-          <div className='bg-gray-200 h-8 mx-48 flex items-center justify-center shadow-md'>
- <h1 className="text-lg text-center font-bold uppercase text-white bg-blue-900 rounded-lg p-2 md:text-sm shadow-lg">
-              Map of JK Institute Of Pharmacy
-            </h1>
-          </div>
+        <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+  Map of JK Institute Of Pharmacy
+  </h1>
+</div>
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509198!2d77.123456!3d28.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390c123456789abc%3A0x1234567890abcdef!2sJK%20Institute%20Of%20Pharmacy!5e0!3m2!1sen!2sin!4v1234567890123"
             width="100%"

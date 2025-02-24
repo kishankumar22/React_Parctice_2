@@ -17,6 +17,7 @@ import Infrastructure from './components/academics/Infrastructure';
 
 import Misc from './components/academics/Misc';
 import Facilities from './components/academics/Facilities';
+import LatestPostPage from './components/academics/LatestPostPage';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
         <Route path="/campus/gallaryPage" element={<GalleryPage />} />
+        <Route path="/:slug" element={<LatestPostPage/>} />
       </Routes>
       {/* <Footer /> */}
     </Router>

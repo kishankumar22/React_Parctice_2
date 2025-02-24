@@ -1,15 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
+import { Link } from "react-router-dom"; // Import Link
+import axiosInstance from "../../config";
+
 
 const LatestPost = () => {
-  const posts = [
-    { id: 1, title: "Post 1: Introduction to Pharmacy" },
-    { id: 2, title: "Post 2: Latest Trends in Pharmacy" },
-    { id: 3, title: "Post 3: Career Opportunities in Pharmacy" },
-    { id: 4, title: "Post 4: Importance of Pharmacovigilance" },
-    { id: 5, title: "Post 5: Innovations in Drug Development" },
-  ];
-
+  const [posts, setPosts] = useState([]); // Initialize posts state
   const [isPlaying, setIsPlaying] = useState(true);
   const [hovering, setHovering] = useState(false);
   const marqueeRef = useRef(null);
@@ -17,6 +13,20 @@ const LatestPost = () => {
   const togglePlayPause = () => {
     setIsPlaying(!isPlaying);
   };
+
+  const fetchPosts = async () => {
+    try {
+      const response = await axiosInstance.get('/all-posts');
+      setPosts(response.data);
+    } catch (error) {
+      console.error('Error fetching posts:', error);
+      toast.error('Error fetching posts');
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts(); // Fetch posts on component mount
+  }, []);
 
   useEffect(() => {
     if (marqueeRef.current) {
@@ -27,8 +37,8 @@ const LatestPost = () => {
   return (
     <>
       {/* Header */}
-      <div className="mb-4 mt-2 bg-gray-200 h-8 flex items-center justify-center shadow-md">
-  <h1 className="text-lg sm:text-sm md:text-xl text-center font-bold uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+      <div className="mb-4 mt-2 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
     Latest Post
   </h1>
 </div>
@@ -49,27 +59,26 @@ const LatestPost = () => {
             setHovering(false);
           }}
         >
-          {posts.map((post) => (
+          {posts.filter(post => post.isVisible).map((post) => ( // Filter for visible posts
             <div
-              key={post.id}
-              className="p-2 text-center bg-white  transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
+              key={post.post_id} // Use post_id as the key
+              className="p-2 text-center bg-white transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
             >
-              <a href="/">{post.title}</a>
-              
+              <Link to={`/${post.post_slug}`}>{post.post_title}</Link>
             </div>
           ))}
         </div>
       </div>
 
       {/* Play/Pause Button */}
-      <div className="p-1 text-center flex justify-between absolute top-64">
+      {/* <div className="p-1 text-center flex justify-between absolute top-64">
         <button
           onClick={togglePlayPause}
-          className="p-2 bg-blue-600  text-white rounded-full hover:bg-blue-500 transition-all duration-300"
+          className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-all duration-300"
         >
           {isPlaying ? <FaPause /> : <FaPlay />}
         </button>
-      </div>
+      </div> */}
     </>
   );
 };

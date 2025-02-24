@@ -51,11 +51,11 @@ const Gallery = () => {
   return (
     <>
       <div className='bg-gray-100 p-2'>
-      <div className='bg-gray-200 mt-2 h-8 mx-64 flex items-center justify-center shadow-md'>
-              <h1 className="text-xl text-center font-bold uppercase text-white bg-blue-900 rounded-lg p-2 shadow-lg">
-                Gallery
-              </h1>
-            </div>
+      <div className="mb-4 mt-2  mx-40 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+  gallery
+  </h1>
+</div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-2 my-4 mx-2">
           {galleries.map((gallery, index) => (
             <div key={gallery.id} className="text-center">

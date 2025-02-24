@@ -10,11 +10,11 @@ const Career = () => {
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-8) */}
           <div className="md:w-8/12 p-2">
-          <div className='bg-gray-200 h-8 mx-48  flex items-center justify-center shadow-md'>
-              <h1 className="text-xl text-center font-bold uppercase text-white bg-blue-900 rounded-lg p-2 shadow-lg">
-                Career
-              </h1>
-            </div>
+          <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    career
+  </h1>
+</div>
             <img src={Career1} alt="Career" className="w-full object-fill p-8 mt-4" />
           </div>
 

@@ -6,7 +6,7 @@ import { FaChevronRight } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue-950 text-white text-xs">
+    <footer className="bg-[#283c65] text-white text-xs">
       <div className="container mx-auto px-6 py-10">
         {/* Footer Layout - Grid */}
         <div className="grid grid-cols-1 md:grid-cols-[auto,1fr,1fr,1fr,1fr] gap-4 md:gap-6 items-start">

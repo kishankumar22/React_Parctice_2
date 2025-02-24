@@ -13,7 +13,7 @@ const HomePage = () => {
     <Layout>
           <div>            
            <Slider/>
-           <NewsHead/>
+           {/* <NewsHead/> */}
            <Section/>
            <Gallery/>
            <LogoSlider/>

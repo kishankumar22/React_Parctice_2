@@ -28,7 +28,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="bg-blue-900 w-full z-50 h-10 flex items-center shadow-md">
+    <nav className="bg-[#395183] w-full z-50 h-10 flex items-center shadow-md">
       <div className="container mx-auto px-2 flex justify-between items-center relative">
         {/* Hamburger Button (Mobile) */}
         <button className="md:hidden text-white text-lg relative z-50" onClick={toggleMenu}>

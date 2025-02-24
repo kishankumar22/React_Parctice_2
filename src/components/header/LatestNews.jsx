@@ -41,12 +41,12 @@ const LatestNews = () => {
         </h1>
 
         {/* Scrolling News */}
-        <div className="h-10 w-full md:h-8 overflow-hidden">
+        <div className="h-10 w-full bg-[#39515a] md:h-8 overflow-hidden">
           <Marquee
             behavior=""
             direction="left"
             pauseOnHover
-            className="bg-black h-full"
+            className="bg-[#39515a] h-full"
             style={{ overflow: 'hidden' }}
           >
             {/* Display Notifications Section */}
@@ -54,10 +54,10 @@ const LatestNews = () => {
               {notifications.map((notification) => (
                 <li
                   key={notification.id}
-                  className="p-2 block border-b text-black-2 border-gray-200 hover:bg-gray-800 transition-all duration-300 ease-in-out"
+                  className="p-2 block border-b text-black-2 border-gray-200 hover:b-gray-800 transition-all duration-300 ease-in-out"
                   style={{
                     padding: "10px 15px",
-                    backgroundColor: "#1e293b",
+                    backgroundColor: "#39515a",
                     borderRadius: "5px",
                     marginRight: "20px",
                     whiteSpace: 'nowrap',
@@ -67,7 +67,7 @@ const LatestNews = () => {
                     className="text-white font-medium flex items-center hover:text-blue-400" 
                     onClick={() => handleNotificationClick(notification.notification_url)} // Use onClick instead of href
                   >
-                    <FaBell className="text-yellow mr-2" />
+                    <FaBell className="text-blue-600 mr-2" />
                     {notification.notification_message}
                   </a>
                 </li>

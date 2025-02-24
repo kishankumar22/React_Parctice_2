@@ -21,7 +21,7 @@ const Header = () => {
 
       {/* Center: Title */}
       <div className="flex-1">
-        <h1 className=" lg:text-5xl ml-2 md:text-3xl font-bold text-blue-900">
+        <h1 className=" lg:text-5xl ml-2 md:text-3xl font-bold text-[#395183]">
         <a href="/"> JK Institute Of Pharmacy</a>
         </h1>
       </div>
