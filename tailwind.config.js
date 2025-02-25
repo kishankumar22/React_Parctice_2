@@ -22,6 +22,7 @@ export const theme = {
       helvetica: ['Oswald', 'arial', 'Georgia', 'serif']
     },
     
+    
     keyframes: {
       marquee: {
         '0%': { transform: 'translateY(100%)' },

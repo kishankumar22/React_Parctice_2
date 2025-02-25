@@ -19,12 +19,20 @@ import Misc from './components/academics/Misc';
 import Facilities from './components/academics/Facilities';
 import LatestPostPage from './components/academics/LatestPostPage';
 
+import Chairman from './components/academics/Chairman';
+import Principal from './components/academics/Principal';
+import PageNotFound from './pages/PageNotFound';
+
 function App() {
   return (
     <Router>
+      
       {/* <Header /> */}
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/*" element={<PageNotFound />} />
+        <Route path="/chairman" element={<Chairman/>}/>
+        <Route path="/principal" element={<Principal/>}/>
         <Route path="/aboutus" element={<AboutUsPage />} />
         <Route path="/academics" element={<AcademicsPage />} />
         <Route path="/registration" element={<RegistrationForm />} />
@@ -39,7 +47,7 @@ function App() {
         <Route path="/facilities" element={<Facilities />} />
         <Route path="/infrastructure" element={<Infrastructure />} />
         <Route path="/campus/gallaryPage" element={<GalleryPage />} />
-        <Route path="/:slug" element={<LatestPostPage/>} />
+        <Route path="/post/:slug" element={<LatestPostPage/>} />
       </Routes>
       {/* <Footer /> */}
     </Router>

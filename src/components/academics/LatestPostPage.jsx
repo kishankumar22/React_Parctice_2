@@ -10,7 +10,7 @@ const LatestPostPage = () => {
 
   const fetchPost = async (slug) => {
     try {
-      const response = await axiosInstance.get(`/${slug}`); // Use the slug in the endpoint
+      const response = await axiosInstance.get(`/post/${slug}`); // Use the slug in the endpoint
       setPost(response.data);
       console.log(response.data);
     } catch (error) {

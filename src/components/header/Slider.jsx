@@ -3,16 +3,24 @@ import axiosInstance from '../../config';
 
 const Slider = () => {
   const [banners, setBanners] = useState([]); // Array of banners
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTransitioning, setIsTransitioning] = useState(true); // Track transition status
+  const [currentIndex, setCurrentIndex] = useState(1); // Start from second slide (since first is duplicated)
+  const [isTransitioning, setIsTransitioning] = useState(true);
 
   // Fetch banners from backend
   const fetchBanners = async () => {
     try {
       const res = await axiosInstance.get('/banners'); // Fetch banners from API
-      // Filter banners to only include those that are visible
       const visibleBanners = res.data.filter((banner) => banner.IsVisible);
-      setBanners(visibleBanners);
+      
+      if (visibleBanners.length > 0) {
+        // Add first and last slides at the ends to create a seamless loop
+        const loopedBanners = [
+          visibleBanners[visibleBanners.length - 1], // Duplicate last at the start
+          ...visibleBanners,
+          visibleBanners[0], // Duplicate first at the end
+        ];
+        setBanners(loopedBanners);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -22,7 +30,6 @@ const Slider = () => {
     fetchBanners();
   }, []);
 
-  // Automatically slide images
   useEffect(() => {
     const interval = setInterval(() => {
       nextImage();
@@ -30,45 +37,49 @@ const Slider = () => {
     return () => clearInterval(interval);
   }, [currentIndex, banners]);
 
-  // Next image handler (infinite linear transition)
   const nextImage = () => {
+    if (banners.length < 3) return; // Avoid issues with small arrays
+
     setIsTransitioning(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % banners.length); // Loop back to the first image
+    setCurrentIndex((prevIndex) => prevIndex + 1);
   };
 
-  // Reset slider position after the last slide
   useEffect(() => {
     if (currentIndex === banners.length - 1) {
-      const timeout = setTimeout(() => {
+      setTimeout(() => {
         setIsTransitioning(false);
-        setCurrentIndex(0); // Instantly move back to the first image (no animation)
-      }, 1000); // Wait for the animation to finish
-      return () => clearTimeout(timeout);
+        setCurrentIndex(1); // Instantly move back to first real slide (skip animation)
+      }, 1000);
+    }
+  }, [currentIndex, banners.length]);
+
+  useEffect(() => {
+    if (currentIndex === 0) {
+      setTimeout(() => {
+        setIsTransitioning(false);
+        setCurrentIndex(banners.length - 2); // Instantly move back to last real slide
+      }, 1000);
     }
   }, [currentIndex, banners.length]);
 
   return (
     <div className="relative w-full mx-auto overflow-hidden">
-      {/* Slider Container */}
       <div
-        className="flex transition-transform ease-linear duration-1000" 
+        className="flex transition-transform ease-linear duration-1000"
         style={{
           transform: `translateX(-${currentIndex * 100}%)`,
           transition: isTransitioning ? 'transform 1s ease-in-out' : 'none',
         }}
       >
-        {/* Render slides */}
-        {banners.map((banner) => (
-          <div key={banner.id} className="min-w-full text-center">
-            {/* Image */}
+        {banners.map((banner, index) => (
+          <div key={index} className="min-w-full text-center">
             <img
-              src={banner.bannerUrl} 
-              alt={banner.bannerName} 
-              className="w-full h-auto max-h-[464px] object-cover" // Use object-cover for better responsiveness
+              src={banner.bannerUrl}
+              alt={banner.bannerName}
+              className="w-full h-500 max-h-[520px] object-cover"
             />
-            {/* Slide Message */}
-            <div className="bg-blue-800 p-3 shadow-md text-center">
-              <p className="text-white text-sm md:text-lg">{banner.bannerName}</p> {/* Display banner name */}
+            <div className="bg-gray-transparent w-44 text-center -mt-36 ml-12 p-3 shadow-md relative">
+              <p className="text-white text-sm md:text-lg">{banner.bannerName}</p>
             </div>
           </div>
         ))}
@@ -76,7 +87,7 @@ const Slider = () => {
 
       {/* Left Arrow */}
       <button
-        onClick={() => setCurrentIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : banners.length - 1))}
+        onClick={() => setCurrentIndex((prevIndex) => prevIndex - 1)}
         className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white bg-black rounded-full p-2 opacity-50 hover:opacity-100 transition-opacity"
       >
         &lt;

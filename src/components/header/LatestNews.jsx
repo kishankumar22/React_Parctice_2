@@ -13,7 +13,7 @@ const LatestNews = () => {
       try {
         const response = await axiosInstance.get('/notifications/all-notification');
         setNotifications(response.data); // Assuming the response data is an array of notifications
-        //console.log(response.data); // Log notifications to the console
+        console.log(response.data); // Log notifications to the console
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }
@@ -34,14 +34,14 @@ const LatestNews = () => {
 
   return (
     <>
-      <div className="bg-black flex flex-col md:flex-row h-auto md:h-8">
+      <div className="bg-black flex justify-center flex-row md:flex-row h-auto md:h-8">
         {/* Latest News Header */}
-        <h1 className="bg-blue-900 block min-w-28 h-8 md:w-48 p-2 md:p-1 text-white text-center font-medium">
-          Latest News
-        </h1>
+        <h1 className="bg-blue-900 block min-w-28 h-8 w-32 md:w-28 md:text-center p-1 md:p-1 text-white text-left font-medium">
+  Latest News
+</h1>
 
         {/* Scrolling News */}
-        <div className="h-10 w-full bg-[#39515a] md:h-8 overflow-hidden">
+        <div className="h-8 w-full bg-[#39515a] md:h-8 overflow-hidden">
           <Marquee
             behavior=""
             direction="left"
@@ -78,7 +78,7 @@ const LatestNews = () => {
         </div>
 
         {/* Social Media Links */}
-        <div className="flex justify-center md:justify-end mt-2 md:mt-0">
+        <div className="hidden md:flex justify-center md:justify-end mt-2 md:mt-0">
           <ul className="flex">
             {/* Social Media Icons */}
             <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
@@ -125,8 +125,9 @@ const LatestNews = () => {
           </ul>
         </div>
       </div>
+   
     </>
   );
 };
 
-export default LatestNews;
+export default LatestNews;  
