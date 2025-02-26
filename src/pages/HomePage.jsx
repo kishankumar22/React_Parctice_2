@@ -11,22 +11,20 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true); // State to manage loading
 
   useEffect(() => {
-    // Simulate a loading delay
     const timer = setTimeout(() => {
-      setLoading(false); // Set loading to false after 2 seconds
-    }, 800); // 2000 milliseconds = 2 seconds
-
-    return () => clearTimeout(timer); // Cleanup the timer on unmount
+      setLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
-      {loading ? ( // Show loader while loading
+      {loading ? (
         <div className="flex justify-center items-center h-screen">
-          <RingLoader size={120} color="#3700ff" /> {/* Loader color can be adjusted */}
+          <RingLoader size={120} color="#3700ff" />
         </div>
       ) : (
-        <Layout>
+        <Layout disableLoader={true}>  {/* Pass prop to disable Layout's loader */}
           <div>
             <Slider />
             {/* <NewsHead /> */}

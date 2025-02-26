@@ -89,8 +89,8 @@ const Footer = () => {
       </div>
         <div className="flex flex-col md:flex-row justify-between bg-gray-900 text-yellow-400 px-6 md:px-10 py-3 mt-4 text-xs text-center md:text-left">
           <p>
-            <a href="https://jkiop.org/" className="hover:text-gray-300">
-              Copyright © 2022 JK Institute Of Pharmacy
+            <a href="/" className="hover:text-gray-300">
+              Copyright © 2025 JK Institute Of Pharmacy
             </a>
           </p>
           <p>

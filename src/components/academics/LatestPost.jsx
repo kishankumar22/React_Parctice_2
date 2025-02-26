@@ -37,14 +37,14 @@ const LatestPost = () => {
   return (
     <>
       {/* Header */}
-      <div className="mb-4 mt-2 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+      <div className="mb-4 mt-2 mx-32 lg:mx-12 md:mx-4 sm:mx- md:ml-12 bg-gray-300 h-6 flex items-center justify-center shadow-md">
   <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
     Latest Post
   </h1>
 </div>
 
       {/* Marquee Container */}
-      <div className="relative overflow-hidden h-96">
+      <div className="relative overflow-hidden  text-justify h-96">
         <div
           ref={marqueeRef}
           className="absolute inset-0 flex flex-col animate-marquee"
@@ -62,7 +62,7 @@ const LatestPost = () => {
           {posts.filter(post => post.isVisible).map((post) => ( // Filter for visible posts
             <div
               key={post.post_id} // Use post_id as the key
-              className="p-2 text-center bg-white transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
+              className="p-2 mx-2 text-justify bg-white transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
             >
               <Link to={`/${post.post_slug}`}>{post.post_title}</Link>
             </div>

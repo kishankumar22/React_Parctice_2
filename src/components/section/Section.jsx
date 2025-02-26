@@ -6,15 +6,18 @@ import WhyUs from '../home/WhyUs';
 
 const Section = () => {
   return (
-    <div className=' h-auto  flex flex-col md:flex-row gap-4 p-4 mb-4 text-lg'>
-      <div className='md:basis-1/3 mb-4 md:mb-0'> {/* Adjusted basis for better distribution */}
-        <WhyUs />
-      </div>
-      <div className='md:basis-1/3 mb-4 md:mb-0'> {/* Adjusted basis for better distribution */}
-        <NoticeCircular />
-      </div>
-      <div className='md:basis-1/3 mb-4 md:mb-0'> {/* Adjusted basis for better distribution */}
-        <ProfileSection />
+    <div className='flex flex-col gap-4 pt-4 mb-6 text-lg'>
+      {/* For mobile and tablet screens */}
+      <div className='flex flex-col md:flex-row gap-4 w-full'>
+        <div className='flex-1 min-w-0 mb-4 md:mb-0 md:basis-1/3'> {/* 3 columns on large screens */}
+          <WhyUs />
+        </div>
+        <div className='flex-1 min-w-0 mb-4 md:mb-0 md:basis-1/3'> {/* 3 columns on large screens */}
+          <NoticeCircular />
+        </div>
+        <div className='flex-1 min-w-0 mb-4 md:mb-0 md:basis-1/3'> {/* 3 columns on large screens */}
+          <ProfileSection />
+        </div>
       </div>
     </div>
   );

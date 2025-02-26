@@ -6,15 +6,15 @@ import LatestPost from './LatestPost';
 const Misc = () => {
   return (
     <Layout>
-      <div className="container h-auto mx-auto p-4">
+      <div className="container h-auto mx-auto p-6">
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-8) */}
-          <div className="md:w-8/12 p-2">
-          <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
-  Misc
-  </h1>
-</div>
+          <div className="md:w-8/12 pt-2">
+            <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+              <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+                Misc
+              </h1>
+            </div>
             <div className='px-4 m-4'>
               <ul className='list-none'>
                 <li className='flex items-center font-medium p-2 text-sm group hover:opacity-50'>
@@ -45,8 +45,8 @@ const Misc = () => {
           </div>
 
           {/* Right Column (col-4) */}
-          <div className="md:w-4/12 p-2">
-           <LatestPost/>
+          <div className="md:w-4/12 ">
+            <LatestPost />
           </div>
         </div>
       </div>

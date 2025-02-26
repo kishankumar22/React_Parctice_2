@@ -4,7 +4,7 @@ import { FaPhone, FaClipboardList, FaCheckCircle } from 'react-icons/fa'; // Imp
 import logo1 from "../../assets/logo/logo.jpg"; // Replace with your logo
 import logo2 from "../../assets/logo/aicte-logo.jpg"; // Replace with your logo
 import logo3 from "../../assets/logo/bte up.jpg"; // Replace with your logo
-import logo4 from "../../assets/logo/pci logo.jpg"; 
+import logo4 from "../../assets/logo/pci logo.jpg";
 import LatestPost from '../academics/LatestPost';
 
 const AdmissionProcess = () => {
@@ -14,28 +14,25 @@ const AdmissionProcess = () => {
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-8) */}
           <div className="md:w-8/12 p-2">
-          <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
-  Admission
-  </h1>
-</div>
+            <div className="mb-4 mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+              <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+                Admission
+              </h1>
+            </div>
             <div className="px-4 mt-4">
               <h2 className="font-semibold text-2xl text-red-600">Approval of College:</h2>
-              <ul className="list-disc list-inside mt-2">
-                <li className="flex items-center mb-2 hover:opacity-50 transition-opacity duration-300">
-                  <b>1.</b>
-                  <img src={logo4} alt="PCI Logo" className="h-16 w-16 mr-2" /> {/* Increased size */}
-                  PCI (Pharmacy Council of India)
+              <ul className="list-disc list-inside mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                <li className="flex  flex-col items-center mb-2 hover:opacity-50 transition-opacity duration-300">
+                  <img src={logo4} alt="PCI Logo" className="h-20 w-20 mr-2" />
+                  <p className='text-sm mt-2'><b>1. </b>PCI (Pharmacy Council of India)</p>
                 </li>
-                <li className="flex items-center mb-2 hover:opacity-50 transition-opacity duration-300">
-                  <b>2.</b>
-                  <img src={logo2} alt="AICTE Logo" className="h-16 w-16 mr-2" /> {/* Increased size */}
-                  AICTE (All India Council of Technical Education)
+                <li className="flex flex-col  items-center mb-2 hover:opacity-50 transition-opacity duration-300">
+                  <img src={logo2} alt="AICTE Logo" className="h-20 w-20mr-2" />
+                 <p className='text-sm mt-2 text-center '><b>2. </b> AICTE (All India Council of Technical Education)</p>
                 </li>
-                <li className="flex items-center mb-2 hover:opacity-50 transition-opacity duration-300">
-                  <b>3.</b>
-                  <img src={logo3} alt="BTE Logo" className="h-16 w-16 mr-2" /> {/* Increased size */}
-                  B.T.E (Board of Technical Education)
+                <li className="flex  flex-col items-center mb-2 hover:opacity-50 transition-opacity duration-300">
+                 <img src={logo3} alt="BTE Logo" className="h-20 w-20 mr-2" />
+                  <p className='text-sm mt-2'> <b>3. </b> B.T.E (Board of Technical Education)</p>                 
                 </li>
               </ul>
               <div className="mt-4 border-y-2 p-2">
@@ -44,7 +41,7 @@ const AdmissionProcess = () => {
               <div className="mt-4">
                 <span className="text-2xl font-bold text-red-600 mr-12">Course Offered:</span>
                 <span className="mt-2 text-2xl font-bold text-blue-800"> Diploma in Pharmacy</span>
-                
+
                 <h3 className="font-semibold mt-4 flex items-center">
                   <FaCheckCircle className="text-green-600 mr-2" />
                   Eligibility Criteria:
@@ -78,7 +75,7 @@ const AdmissionProcess = () => {
 
           {/* Right Column (col-4) */}
           <div className="md:w-4/12">
-            <LatestPost/>
+            <LatestPost />
           </div>
         </div>
       </div>

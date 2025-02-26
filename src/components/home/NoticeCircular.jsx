@@ -14,7 +14,6 @@ const NotificationCircular = () => {
       try {
         const response = await axiosInstance.get('/notifications/all-notification');
         setNotifications([...response.data, ...response.data, ...response.data]); // Duplicate array for smoother infinite scrolling
-        // console.log(response.data);
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }
@@ -47,10 +46,10 @@ const NotificationCircular = () => {
   const handlePlay = () => setIsScrolling(true);
 
   return (
-    <div className="bg-white h-heightsec ">
+    <div className="bg-white h-heightsec">
       {/* Header */}
       <div className="flex items-center h-10 w-full bg-white">
-        <h2 className="text-sm p-1 sm:text-lg md:text-[1.25rem] flex h-8 w-96 mb-2 font-bold bg-blue-200">
+        <h2 className="text-sm p-1 sm:text-lg md:text-xl flex h-8 w-full mb-2 font-bold bg-blue-200">
           Notices & Circulars
         </h2>
         <div className="justify-start border-t-4 w-full border-blue-800 mb-2"></div>
@@ -62,25 +61,29 @@ const NotificationCircular = () => {
           {notifications.map((notification) => (
             <div
               key={notification.id}
-              className="h-16 border-yellow-500 rounded bg-white"
-            > 
-              <div className="text-sky-500 px-12 pb-0.5 text-sm sm:text-xs">
-                <b className="font-semibold text-black">Date uploaded:</b> {new Date(notification.created_on).toLocaleDateString('en-GB')}
+              className="border-yellow-500 rounded bg-white mb-2 p-2" // Removed fixed height and added padding
+            >
+              <div className="text-sky-500 pb-0.5 text-xs sm:text-sm">
+                <b className="font-normal  ml-6 md:ml-8  text-black">Date uploaded:</b> {new Date(notification.created_on).toLocaleDateString('en-GB')}
               </div>
-              <div className="flex items-start mb-2 px-4">
-                <FaRegArrowAltCircleRight className="w-2 h-2 sm:w-6 sm:h-6 text-red-700 mr-2" />
-                <h1 className="text-sm font-bold sm:text-xs lg:text-sm text-black">
-                  <a 
-                    className="font-semibold flex items-center hover:text-blue-400" 
-                    href={notification.notification_url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                  >
-                    {notification.notification_message}
-                  </a>
-                </h1>
+              <div className="flex items-start">
+                <FaRegArrowAltCircleRight className="w-4 h-4 sm:w-6 sm:h-6 text-red-700 mr-2" />
+                <div className="flex-1">
+                  <h1 className="text-xs  font-bold sm:text-sm lg:text-base text-black">
+                    <a 
+                      className="font-normal flex items-center hover:text-blue-400" 
+                      href={notification.notification_url} 
+                      target="_blank" 
+                      rel="noopener noreferrer"
+                    >
+                      <span className="block overflow-hidden text-ellipsis whitespace-normal">
+                        {notification.notification_message} 
+                      </span>
+                    </a>
+                  </h1>
+                </div>
               </div>
-              <hr className="border-b-1 border-black" />
+              <hr className="border-b-1 border-black mt-2" />
             </div>
           ))}
         </div>
@@ -88,7 +91,7 @@ const NotificationCircular = () => {
 
       {/* Controls */}
       <div className="bg-blue-900 p-2 flex justify-between items-center">
-        <button className="text-white border-2 border-white text-sm sm:text-base py-1 px-4 shadow-md hover:bg-blue-200 hover:border-blue-200 hover:text-black">
+        <button className="text-white border-2 border-white text-xs sm:text-sm py-1 px-2 sm:px-4 shadow-md hover:bg-blue-200 hover:border-blue-200 hover:text-black">
           <Link to="/allnotification">View All Notices / Circulars</Link>
         </button>
         <button

@@ -51,7 +51,7 @@ const Gallery = () => {
   return (
     <>
       <div className='bg-gray-100  p-2'>
-      <div className="mb-4 mt-2  mx-40 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+      <div className="mb-4 mt-2 mx-24 lg:mx-60 md:mx-44 sm:mx-24 md:text-center  bg-gray-300 h-6 flex items-center justify-center shadow-md">
   <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
   gallery
   </h1>

@@ -24,7 +24,7 @@ const Navbar = () => {
     { name: "Misc", route: "/misc" },
     { name: "Gallery", route: "/campus/gallaryPage" },
     { name: "Contact", route: "/contact" },
-    { name: "Login & Portals", route: "http://localhost:5173/auth/signin", external: true },
+    { name: "Admin Login", route: "http://localhost:5173/auth/signin", external: true },
   ];
 
   return (
@@ -36,9 +36,9 @@ const Navbar = () => {
         </button>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex flex-wrap justify-center items-center text-white text-[12px] font-semibold font-roboto uppercase">
+        <ul className="hidden md:flex flex-wrap justify-start items-center text-white text-[12px] font-semibold font-roboto uppercase">
           <li
-            className={`h-10 p-2 hover:bg-blue-600 flex justify-center align-middle border-r-2 border-black group transition-all duration-300 ${location.pathname === "/" ? "bg-red-500" : ""
+            className={`h-10 p-2 text-white text-opacity-75 hover:text-white  flex justify-center align-middle border-r-2 border-black group transition-all duration-300 ${location.pathname === "/" ? "text-amber-400 hover:text-opacity-100 hover:text-amber-400 " : ""
               }`}
           >
             <Link to="/" className="py-1">Home</Link>
@@ -46,7 +46,7 @@ const Navbar = () => {
           {menuItems.map((item, index) => (
             <li
               key={index}
-              className={`p-2 hover:bg-blue-600 flex justify-center align-middle border-r-2 border-black group transition-all duration-300 whitespace-nowrap last:border-0 ${location.pathname === item.route ? "bg-red-500" : ""
+              className={`p-2 md:flex lg:flex  sm:flex  flex-wrap  text-white md: flex-0 m text-opacity-75 hover:text-white flex justify-center align-middle border-r-2 border-black group transition-all duration-300 whitespace-nowrap last:border-0 ${location.pathname === item.route ? "text-amber-400 hover:text-opacity-100 hover:text-amber-400 " : ""
                 }`}
             >
               {item.external ? (
@@ -80,7 +80,7 @@ const Navbar = () => {
             {menuItems.map((item, index) => (
               <li
                 key={index}
-                className={`p-2  group rounded transition-all hover:bg-blue-700 duration-300 whitespace-nowrap ${location.pathname === item.route ? "bg-red-500" : ""
+                className={`p-2  group rounded transition-all hover:text-blue-700 duration-300 ${location.pathname === item.route ? "bg-red-500" : ""
                   }`}
               >
                 {item.external ? (

@@ -22,10 +22,14 @@ const LogoSlider = () => {
   return (
     <div className="flex flex-col p-4 justify-center w-full bg-gray-100">
       {/* Slider Title */}
-      <h1 className="text-center text-3xl p-2 font-bold text-blue-900">LINKS</h1>
+      <div className="mb-4 mt-2 mx-24 lg:mx-60 md:mx-44 sm:mx-24 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+  LINKS
+  </h1>
+</div>
 
       {/* Logo Slider */}
-      <div className="flex justify-evenly overflow-x-auto p-2 rounded-sm w-full space-x-4">
+      <div className="flex justify-evenly overflow-x- p-2 rounded-sm w-full space-x-4">
         {links
           .filter(link => link.IsVisible) // Filter links where IsVisible is true
           .map((link, index) => (

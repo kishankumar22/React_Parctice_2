@@ -177,7 +177,7 @@ const ContactPage = () => {
 
           {/* Right Column (col-5) - Contact Details */}
           <div className="md:w-5/12 p-4 flex flex-col">
-            <div className="bg-blue-100 p-4 rounded-lg shadow-md flex-grow">
+            <div className=" p-4 rounded-lg shadow-md flex-grow">
               <h2 className="text-lg font-semibold bg-blue-900 text-center text-white rounded">Address Info</h2>
               <p className="mt-2 flex items-center">
                 <FaMapMarkerAlt className="text-blue-500 mr-2" />
@@ -217,7 +217,7 @@ const ContactPage = () => {
           </div>
         </div>
         {/* Google Maps iframe */}
-        <div className="">
+        <div className=" mt-6">
         <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
   <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
   Map of JK Institute Of Pharmacy
