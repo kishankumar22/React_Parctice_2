@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FaPlay, FaPause } from "react-icons/fa";
 import { Link } from "react-router-dom"; // Import Link
 import axiosInstance from "../../config";
 
@@ -10,9 +9,7 @@ const LatestPost = () => {
   const [hovering, setHovering] = useState(false);
   const marqueeRef = useRef(null);
 
-  const togglePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
+  
 
   const fetchPosts = async () => {
     try {
@@ -64,21 +61,13 @@ const LatestPost = () => {
               key={post.post_id} // Use post_id as the key
               className="p-2 mx-2 text-justify bg-white transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
             >
-              <Link to={`/${post.post_slug}`}>{post.post_title}</Link>
+              <Link to={`/post/${post.post_slug}`}>{post.post_title}</Link>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Play/Pause Button */}
-      {/* <div className="p-1 text-center flex justify-between absolute top-64">
-        <button
-          onClick={togglePlayPause}
-          className="p-2 bg-blue-600 text-white rounded-full hover:bg-blue-500 transition-all duration-300"
-        >
-          {isPlaying ? <FaPause /> : <FaPlay />}
-        </button>
-      </div> */}
+    
     </>
   );
 };
