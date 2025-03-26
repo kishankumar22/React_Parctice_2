@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../layout/Layout';
 import LatestPost from './LatestPost';
 import axiosInstance from '../../config';
+import logo1 from "../../assets/logo/logo.jpg";
 
 const Faculty = () => {
   const [faculties, setFaculties] = useState([]);
@@ -33,34 +34,36 @@ const Faculty = () => {
               </h1>
             </div>
             <div className='px-2 md:px-4 m-4'>
-              <table className="min-w-full bg-white border border-gray-300">
-                <thead>
-                  <tr className="bg-gray-200 text-gray-600 uppercase text-xs md:text-sm leading-normal">
-                    <th className="py-2 px-2 md:px-4 text-left">S.NO.</th>
-                    <th className="py-2 px-2 md:px-4 text-left">Profile Picture</th>
-                    <th className="py-2 px-2 md:px-4 text-left">Name Of Faculty</th>
-                    <th className="py-2 px-2 md:px-4 text-left">Qualification</th>
-                    <th className="py-2 px-2 md:px-4 text-left">Designation</th>
-                  </tr>
-                </thead>
-                <tbody className="text-gray-600 text-xs md:text-sm font-light">
-                  {faculties.map((faculty, index) => (
-                    <tr key={faculty.id} className="border-b border-gray-300 hover:bg-gray-100">
-                      <td className="py-2 px-2 md:px-4">{index + 1}</td>
-                      <td className="py-2 px-2 md:px-4">
-                        <img
-                          src={faculty.profilePicUrl}
-                          alt={faculty.faculty_name}
-                          className="w-16 h-16 md:w-20 md:h-20 object-cover rounded-full"
-                        />
-                      </td>
-                      <td className="py-2 px-2 md:px-4 capitalize">{faculty.faculty_name}</td>
-                      <td className="py-2 px-2 md:px-4 uppercase">{faculty.qualification}</td>
-                      <td className="py-2 px-2 md:px-4 uppercase">{faculty.designation}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+            <div className="overflow-x-auto">
+            <table className="min-w-full bg-white border border-gray-300">
+  <thead>
+    <tr className="bg-gray-200 text-gray-600 uppercase text-xs md:text-xs leading-normal">
+      <th className="py-1 px-2 md:px-3 text-left text-xs">S.NO.</th>
+      <th className="py-1 px-2 md:px-3 text-left text-xs">Profile Picture</th>
+      <th className="py-1 px-2 md:px-3 text-left text-xs">Name Of Faculty</th>
+      <th className="py-1 px-2 md:px-3 text-left text-xs">Qualification</th>
+      <th className="py-1 px-2 md:px-3 text-left text-xs">Designation</th>
+    </tr>
+  </thead>
+  <tbody className="text-gray-600 text-xs md:text-xs font-light">
+    {faculties.map((faculty, index) => (
+      <tr key={faculty.id} className="border-b border-gray-300 hover:bg-gray-100">
+        <td className="py-1 px-2 md:px-3 text-xs">{index + 1}</td>
+        <td className="py-1 px-2 md:px-3 text-xs">
+          <img
+            src={faculty.profilePicUrl || 'https://static.vecteezy.com/system/resources/previews/024/983/914/non_2x/simple-user-default-icon-free-png.png'}
+            alt={faculty.faculty_name}
+            className="w-12 h-12 md:w-12 md:h-12 object-cover rounded-full"
+          />
+        </td>
+        <td className="py-1 px-2 md:px-3 text-xs capitalize">{faculty.faculty_name}</td>
+        <td className="py-1 px-2 md:px-3 text-xs uppercase">{faculty.qualification}</td>
+        <td className="py-1 px-2 md:px-3 text-xs uppercase">{faculty.designation}</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+</div>  
             </div>
           </div>
 
