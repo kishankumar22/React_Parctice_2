@@ -20,7 +20,7 @@ const Header = () => {
 
         {/* Center: Title */}
         <div className="flex-1 text-center  md:text-left">
-          <h1 className="text-sm md:text-3xl lg:text-5xl font-bold text-[#395183]">
+          <h1 className="text-sm md:text-3xl lg:text-5xl px-3 font-bold text-[#395183]">
             <a href="/">JK Institute Of Pharmacy </a>
           </h1>
         </div>

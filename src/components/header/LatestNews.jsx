@@ -13,7 +13,7 @@ const LatestNews = () => {
       try {
         const response = await axiosInstance.get('/notifications/all-notification');
         setNotifications(response.data); // Assuming the response data is an array of notifications
-        console.log(response.data); // Log notifications to the console
+        // console.log(response.data); // Log notifications to the console
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }
@@ -79,50 +79,60 @@ const LatestNews = () => {
 
         {/* Social Media Links */}
         <div className="hidden md:flex justify-center md:justify-end mt-2 md:mt-0">
-          <ul className="flex">
-            {/* Social Media Icons */}
-            <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-              <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
-                <FaFacebookF size={20} />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
-                <FaFacebookF size={20} />
-              </div>
-            </li>
-            <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-              <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
-                <FaTwitter size={20} />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
-                <FaTwitter size={20} />
-              </div>
-            </li>
-            <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-              <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
-                <FaYoutube size={20} />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
-                <FaYoutube size={20} />
-              </div>
-            </li>
-            <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-              <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
-                <FaGooglePlusG size={20} />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
-                <FaGooglePlusG size={20} />
-              </div>
-            </li>
-            <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-              <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
-                <FaPinterestP size={20} />
-              </div>
-              <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
-                <FaPinterestP size={20} />
-              </div>
-            </li>
-            {/* Add other social media icons similarly */}
-          </ul>
+        <ul className="flex">
+  {/* Social Media Icons */}
+  <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
+    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+      <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
+        <FaFacebookF size={20} />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
+        <FaFacebookF size={20} />
+      </div>
+    </a>
+  </li>
+  <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
+    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+      <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
+        <FaTwitter size={20} />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
+        <FaTwitter size={20} />
+      </div>
+    </a>
+  </li>
+  <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
+    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+      <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
+        <FaYoutube size={20} />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
+        <FaYoutube size={20} />
+      </div>
+    </a>
+  </li>
+  <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
+    <a href="https://plus.google.com" target="_blank" rel="noopener noreferrer">
+      <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
+        <FaGooglePlusG size={20} />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
+        <FaGooglePlusG size={20} />
+      </div>
+    </a>
+  </li>
+  <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
+    <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
+      <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
+        <FaPinterestP size={20} />
+      </div>
+      <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
+        <FaPinterestP size={20} />
+      </div>
+    </a>
+  </li>
+  {/* Add other social media icons similarly */}
+</ul>
         </div>
       </div>
    

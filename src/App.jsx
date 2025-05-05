@@ -22,6 +22,7 @@ import LatestPostPage from './components/academics/LatestPostPage';
 import Chairman from './components/academics/Chairman';
 import Principal from './components/academics/Principal';
 import PageNotFound from './pages/PageNotFound';
+import NotificationList from './pages/NotificationList';
 
 function App() {
   return (
@@ -47,6 +48,7 @@ function App() {
         <Route path="/infrastructure" element={<Infrastructure />} />
         <Route path="/campus/gallaryPage" element={<GalleryPage />} />
         <Route path="/post/:slug" element={<LatestPostPage/>} />
+        <Route path="/notificationlist" element={<NotificationList/>} />
       </Routes>
       {/* <Footer /> */}
     </Router>

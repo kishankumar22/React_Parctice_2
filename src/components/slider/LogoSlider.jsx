@@ -29,7 +29,7 @@ const LogoSlider = () => {
 </div>
 
       {/* Logo Slider */}
-      <div className="flex justify-evenly overflow-x- p-2 rounded-sm w-full space-x-4">
+      <div className="flex justify-evenly overflow-x-auto p-2 rounded-sm w-full space-x-4">
         {links
           .filter(link => link.IsVisible) // Filter links where IsVisible is true
           .map((link, index) => (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../socialLinks/social_icons.css";
+import "../socialLinks/social_icons.css"; // Ensure this file is correctly styled
 
 const SocialLinks = () => {
   const socialLinks = [
@@ -32,24 +32,28 @@ const SocialLinks = () => {
   ];
 
   return (
-    <div className="social-links">
-      {socialLinks.map((link, index) => (
+    <div className="social-links flex space-x-4">
+      {socialLinks.map((link, index) =>
         link.url.startsWith("http") ? (
           <a
             key={index}
             href={link.url}
             target="_blank"
             rel="noopener noreferrer"
-            className={`social-icon ${link.name}`}
+            className={`social-icon ${link.name} text-2xl text-gray-600 hover:text-blue-500 transition-colors`}
           >
             <i className={link.iconClass}></i>
           </a>
         ) : (
-          <Link key={index} to={link.url} className={`social-icon ${link.name}`}>
+          <Link
+            key={index}
+            to={link.url}
+            className={`social-icon ${link.name} text-2xl text-gray-600 hover:text-blue-500 transition-colors`}
+          >
             <i className={link.iconClass}></i>
           </Link>
         )
-      ))}
+      )}
     </div>
   );
 };

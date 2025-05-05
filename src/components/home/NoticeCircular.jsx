@@ -37,7 +37,7 @@ const NotificationCircular = () => {
       animationFrameId = requestAnimationFrame(scroll);
     };
 
-    scroll(); // Start scrolling
+    animationFrameId = requestAnimationFrame(scroll); // Start scrolling
 
     return () => cancelAnimationFrame(animationFrameId); // Cleanup on unmount
   }, [isScrolling]);
@@ -56,28 +56,34 @@ const NotificationCircular = () => {
       </div>
 
       {/* Notification Slider */}
-      <div className="relative h-96 overflow-hidden" ref={scrollRef}>
+      <div
+        className="relative h-96 overflow-hidden"
+        ref={scrollRef}
+        onMouseEnter={handlePause} // Pause scrolling on hover
+        onMouseLeave={handlePlay} // Resume scrolling when hover ends
+      >
         <div>
           {notifications.map((notification) => (
             <div
               key={notification.id}
-              className="border-yellow-500 rounded bg-white mb-2 p-2" // Removed fixed height and added padding
+              className="border-yellow-500 rounded bg-white mb-2 p-2"
             >
               <div className="text-sky-500 pb-0.5 text-xs sm:text-sm">
-                <b className="font-normal  ml-6 md:ml-8  text-black">Date uploaded:</b> {new Date(notification.created_on).toLocaleDateString('en-GB')}
+                <b className="font-normal ml-6 md:ml-8 text-black">Date uploaded:</b>{" "}
+                {new Date(notification.created_on).toLocaleDateString('en-GB')}
               </div>
               <div className="flex items-start">
                 <FaRegArrowAltCircleRight className="w-4 h-4 sm:w-6 sm:h-6 text-red-700 mr-2" />
                 <div className="flex-1">
-                  <h1 className="text-xs  font-bold sm:text-sm lg:text-base text-black">
-                    <a 
-                      className="font-normal flex items-center hover:text-blue-400" 
-                      href={notification.notification_url} 
-                      target="_blank" 
+                  <h1 className="text-xs font-bold sm:text-sm lg:text-base text-black">
+                    <a
+                      className="font-normal flex items-center hover:text-blue-400"
+                      href={notification.notification_url}
+                      target="_blank"
                       rel="noopener noreferrer"
                     >
                       <span className="block overflow-hidden text-ellipsis whitespace-normal">
-                        {notification.notification_message} 
+                        {notification.notification_message}
                       </span>
                     </a>
                   </h1>
@@ -92,7 +98,7 @@ const NotificationCircular = () => {
       {/* Controls */}
       <div className="bg-blue-900 p-2 flex justify-between items-center">
         <button className="text-white border-2 border-white text-xs sm:text-sm py-1 px-2 sm:px-4 shadow-md hover:bg-blue-200 hover:border-blue-200 hover:text-black">
-          <Link to="/allnotification">View All Notices / Circulars</Link>
+          <Link to="/notificationlist">View All Notices / Circulars</Link>
         </button>
         <button
           className="bg-yellow-600 text-white border-2 border-white p-2 shadow-md hover:bg-blue-200 hover:border-blue-200 hover:text-black"

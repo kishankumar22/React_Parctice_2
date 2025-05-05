@@ -24,7 +24,7 @@ const Navbar = () => {
     { name: "Misc", route: "/misc" },
     { name: "Gallery", route: "/campus/gallaryPage" },
     { name: "Contact", route: "/contact" },
-    { name: "Admin Login", route: "https://admin.jkiop.org/auth/signin", external: true },
+    
   ];
 
   return (
