@@ -11,6 +11,7 @@ const Navbar = () => {
   };
 
   const menuItems = [
+    { name: "Home", route: "/" },
     { name: "About Us", route: "/aboutus" },
     { name: "Courses", route: "/courses" },
     { name: "Registration", route: "/registration" },
@@ -24,71 +25,62 @@ const Navbar = () => {
     { name: "Misc", route: "/misc" },
     { name: "Gallery", route: "/campus/gallaryPage" },
     { name: "Contact", route: "/contact" },
-    
   ];
 
   return (
-    <nav className="bg-[#395183] w-full  z-50 shadow-md sm:py-2 lg:p-0 py-2  ">
+    <nav className="bg-[#1E3A8A] w-full z-50 shadow-md sm:py-2 lg:p-0 py-2">
       <div className="mx-auto px-2 flex justify-between items-center relative flex-wrap">
-        {/* Hamburger Button (Mobile) */}
-        <button className="md:hidden text-white  sm:text-center text-lg relative z-50" onClick={toggleMenu}>
+        <button className="md:hidden text-white text-lg relative z-50" onClick={toggleMenu}>
           {menuOpen ? <FaTimes /> : <FaBars />}
         </button>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex  flex-wrap justify-start items-center text-white text-[12px] font-semibold font-roboto uppercase">
-          <li
-            className={`h-10 p-2 text-white text-opacity-75 hover:text-white flex justify-center align-middle border-r-2 border-black group transition-all duration-300 ${location.pathname === "/" ? "text-amber-400 hover:text-opacity-100 hover:text-amber-400" : ""
-              }`}
-          >
-            <Link to="/" className="py-1">Home</Link>
-          </li>
+        <ul className="hidden md:flex flex-wrap justify-around items-center text-white text-sm font-semibold font-roboto uppercase w-full">
           {menuItems.map((item, index) => (
             <li
               key={index}
-              className={`p-2 text-white text-opacity-75 hover:text-white flex justify-center align-middle border-r-2 border-black group transition-all duration-300 whitespace-nowrap last:border-0 ${location.pathname === item.route ? "text-amber-400 hover:text-opacity-100 hover:text-amber-400" : ""
-                }`}
+              className={`p-2 hover:text-orange-400 hover: transition-all duration-200 ${
+                location.pathname === item.route ? "text-[#FFD700]" : ""
+              }`}
             >
               {item.external ? (
-                <a href={item.route} target="_blank" rel="noopener noreferrer" className="group-hover:text-yellow-500 py-1 rounded">
+                <a href={item.route} target="_blank" rel="noopener noreferrer">
                   {item.name}
                 </a>
               ) : (
-                <Link to={item.route} className="group-hover:text-yellow-500 py-1 rounded">
-                  {item.name}
-                </Link>
+                <Link to={item.route}>{item.name}</Link>
               )}
             </li>
           ))}
         </ul>
-
-        {/* Mobile Menu */}
         <div
-          className={`absolute  left-0 top-6  w-full  bg-blue-900 shadow-lg transform transition-all duration-300 ease-in-out ${menuOpen ? "h-auto opacity-100" : "max-h-0 opacity-0"
-            }  overflow-hidden md:hidden`}
-          style={{ zIndex: 20 }} // Set a higher z-index for the mobile menu
+          className={`absolute left-0 top-6 w-full bg-[#0F172A] shadow-lg transform transition-all duration-300 ease-in-out ${
+            menuOpen ? "h-auto opacity-100" : "max-h-0 opacity-0"
+          } overflow-hidden md:hidden`}
+          style={{ zIndex: 20 }}
         >
-          <ul className="text-center  text-white text-sm font-light uppercase">
-            <li
-              className={`p-2 group rounded transition-all duration-300 ${location.pathname === "/" ? "bg-blue-300" : ""
-                }`}
-            >
-              <Link to="/" onClick={toggleMenu} className="group-hover:bg-yellow-500 block p-1 rounded">
-                Home
-              </Link>
-            </li>
+          <ul className="text-center text-white text-base font-light uppercase">
             {menuItems.map((item, index) => (
               <li
                 key={index}
-                className={`p-2 group rounded transition-all hover:text-blue-700 duration-300 ${location.pathname === item.route ? "bg-blue-500" : ""
-                  }`}
+                className={`p-2 rounded transition-transform duration-200 hover:bg-blue-400 hover:scale-105 ${
+                  location.pathname === item.route ? "bg-blue-500" : ""
+                }`}
               >
                 {item.external ? (
-                  <a href={item.route} target="_blank" rel="noopener noreferrer" onClick={toggleMenu} className="group-hover:bg-yellow-500 block p-2 rounded">
+                  <a
+                    href={item.route}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={toggleMenu}
+                    className="block p-2 rounded"
+                  >
                     {item.name}
                   </a>
                 ) : (
-                  <Link to={item.route} onClick={toggleMenu} className="group-hover:bg-yellow-500 block p-2 rounded">
+                  <Link
+                    to={item.route}
+                    onClick={toggleMenu}
+                    className="block p-2 rounded"
+                  >
                     {item.name}
                   </Link>
                 )}
