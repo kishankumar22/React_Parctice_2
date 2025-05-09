@@ -20,9 +20,9 @@ const AboutUsPage = () => {
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-8) */}
           <div className="md:w-8/12 p-2">
-          <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
-    About us
+          <div className="mb-2 mx-4 lg:mx-44 md:mx-28  sm:mx-24 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    ABout Us
   </h1>
 </div>
 

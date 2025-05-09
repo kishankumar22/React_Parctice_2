@@ -25,16 +25,16 @@ const Faculty = () => {
   return (
     <Layout>
       <div className="container h-auto mx-auto p-6">
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row ">
           {/* Left Column (col-8) */}
-          <div className="md:w-8/12 p-2">
+          <div className="md:w-8/12 p-2 ">
             <div className="mb-4 mx-2 md:mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
               <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
                 Faculty
               </h1>
             </div>
-            <div className='px-2 md:px-4 m-4'>
-            <div className="overflow-x-auto">
+            <div className='px-2 md:px-4'>
+            <div className="overflow-x-auto  pt-4">
             <table className="min-w-full bg-white border border-gray-300">
   <thead>
     <tr className="bg-gray-200 text-gray-600 uppercase text-xs md:text-xs leading-normal">

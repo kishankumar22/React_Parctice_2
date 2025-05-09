@@ -34,9 +34,9 @@ const LatestPost = () => {
   return (
     <>
       {/* Header */}
-      <div className="mb-4 mt-2 mx-32 lg:mx-12 md:mx-4 sm:mx- md:ml-12 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
-    Latest Post
+      <div className="mb-4 mt-2  mx-4 lg:mx-12  sm:mx-44 md:mx-20 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    Latest post
   </h1>
 </div>
 

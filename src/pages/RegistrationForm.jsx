@@ -64,11 +64,11 @@ const RegistrationForm = () => {
   return (
     <Layout>
       <form onSubmit={handleSubmit} className="max-w-screen-xl mx-auto px-4 py-8 bg-white rounded">
-        <div className='bg-gray-200 h-8 mx-2 md:mx-64 uppercase -mt-4 mb-6 flex items-center justify-center shadow-md'>
-          <h1 className="text-xl text-center font-bold text-white bg-blue-900 rounded-lg p-2 shadow-lg">
-            Registration Form
-          </h1>
-        </div>
+      <div className="mb-4 mt-2  mx-4 lg:mx-12  sm:mx-44 md:mx-20 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[0.8rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    Registration Form
+  </h1>
+</div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
           <div>

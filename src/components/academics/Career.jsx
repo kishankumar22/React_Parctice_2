@@ -10,9 +10,9 @@ const Career = () => {
         <div className="flex flex-col md:flex-row">
           {/* Left Column (col-8) */}
           <div className="md:w-8/12 p-2">
-          <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
-    career
+          <div className="mb-2  mx-4 lg:mx-44  sm:mx-44 md:mx-20 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    Latest post
   </h1>
 </div>
             <img src={Career1} alt="Career" className="w-full object-fill p-8 mt-4" />

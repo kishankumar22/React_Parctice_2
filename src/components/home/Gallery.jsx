@@ -51,9 +51,9 @@ const Gallery = () => {
   return (
     <>
       <div className='bg-gray-100  p-2'>
-      <div className="mb-4 mt-2 mx-24 lg:mx-60 md:mx-44 sm:mx-24 md:text-center  bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
-  gallery
+      <div className="mb-4 mt-2  mx-4 lg:mx-12  sm:mx-44 md:mx-20 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[1rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    Gallery
   </h1>
 </div>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 p-2 my-4 mx-2">
@@ -78,44 +78,53 @@ const Gallery = () => {
         </div>
 
         {/* Fullscreen Modal */}
-        {isOpen && currentMedia && (
-          <div className="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50">
-            <button
-              className="absolute top-4 right-6 text-white text-3xl"
-              onClick={closeModal}
-            >
-              ✖
-            </button>
-            <button
-              className="absolute left-6 text-white text-3xl"
-              onClick={prevMedia}
-            >
-              ◀
-            </button>
-            <button
-              className="absolute right-6 text-white text-3xl"
-              onClick={nextMedia}
-            >
-              ▶
-            </button>
-
-            <div className="max-w-screen-lg mx-auto">
-              {currentMedia.type === 'video' ? (
-                <video
-                  src={currentMedia.galleryUrl}
-                  controls
-                  className="w-full max-h-[90vh] rounded-md"
-                />
-              ) : (
-                <img
-                  src={currentMedia.galleryUrl}
-                  alt={currentMedia.galleryName}
-                  className="w-full h-full object-contain rounded-md"
-                />
-              )}
-            </div>
-          </div>
-        )}
+   {isOpen && currentMedia && (
+  <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 backdrop-blur-sm">
+    {/* Close button - modern circular style */}
+    <button
+      className="absolute top-4 right-6 p-2 bg-white bg-opacity-20 text-white rounded-full hover:bg-opacity-30 hover:scale-110 transition-all duration-200 flex items-center justify-center w-10 h-10"
+      onClick={closeModal}
+      aria-label="Close"
+    >
+      <span className="text-2xl font-light">✖</span>
+    </button>
+    
+    {/* Previous button - modern circular style */}
+    <button
+      className="absolute left-6 top-1/2 -translate-y-1/2 p-2 bg-white bg-opacity-20 text-white rounded-full hover:bg-opacity-30 hover:scale-110 transition-all duration-200 flex items-center justify-center w-12 h-12"
+      onClick={prevMedia}
+      aria-label="Previous"
+    >
+      <span className="text-2xl">◀</span>
+    </button>
+    
+    {/* Next button - modern circular style */}
+    <button
+      className="absolute right-6 top-1/2 -translate-y-1/2 p-2 bg-white bg-opacity-20 text-white rounded-full hover:bg-opacity-30 hover:scale-110 transition-all duration-200 flex items-center justify-center w-12 h-12"
+      onClick={nextMedia}
+      aria-label="Next"
+    >
+      <span className="text-2xl">▶</span>
+    </button>
+    
+    {/* Media container with improved sizing */}
+    <div className="w-full max-w-screen-lg mx-auto px-4 max-h-[90vh] flex items-center justify-center">
+      {currentMedia.type === 'video' ? (
+        <video
+          src={currentMedia.galleryUrl}
+          controls
+          className="w-[80%] h-[80%] object-contain rounded-lg shadow-2xl"
+        />
+      ) : (
+        <img
+          src={currentMedia.galleryUrl}
+          alt={currentMedia.galleryName}
+          className="w-[80%] h-[80%]  object-contain rounded-lg shadow-2xl"
+        />
+      )}
+    </div>
+  </div>
+)}
       </div>
     </>
   );

@@ -37,9 +37,9 @@ const ContactPage = () => {
   return (
     <Layout>
       <div className="container mx-auto p-8">
-      <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
-  Contact Details
+      <div className="mb-4 mt-2  mx-4 lg:mx-32  sm:mx-44 md:mx-20 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[0.8rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+    Contact Details
   </h1>
 </div>
         <div className="flex flex-col md:flex-row">
@@ -218,8 +218,8 @@ const ContactPage = () => {
         </div>
         {/* Google Maps iframe */}
         <div className=" mt-6">
-        <div className="mb-4  mx-32 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1.125rem] sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+        <div className="mb-4 mt-2  mx-8 lg:mx-32  sm:mx-44 md:mx-20 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[0.81rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
   Map of JK Institute Of Pharmacy
   </h1>
 </div>
