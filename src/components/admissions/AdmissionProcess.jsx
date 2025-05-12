@@ -19,7 +19,7 @@ const AdmissionProcess = () => {
                 Admission
               </h1>
               </div>
-            <div className="px-4 mt-4">
+            <div className=" mt-4">
               <h2 className="font-semibold text-2xl text-red-600">Approval of College:</h2>
               <ul className="list-disc list-inside mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <li className="flex  flex-col items-center mb-2 hover:opacity-50 transition-opacity duration-300">
@@ -38,38 +38,53 @@ const AdmissionProcess = () => {
               <div className="mt-4 border-y-2 p-2">
                 <p className="font-bold text-2xl text-center text-red-600">College Code: <span className="font-normal">680</span></p>
               </div>
-              <div className="mt-4">
-                <span className="text-2xl font-bold text-red-600 mr-12">Course Offered:</span>
-                <span className="mt-2 text-2xl font-bold text-blue-800"> Diploma in Pharmacy</span>
+              <div className="mt-4 px-2 sm:px-2">
+  {/* Course Offered */}
+  <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 mb-4">
+    <span className="text-lg lg:text-xl font-bold text-red-600 whitespace-nowrap">Course Offered:</span>
+    <span className="text-lg lg:text-xl font-bold text-blue-800 ml-0 lg:ml-2">Diploma in Pharmacy</span>
+  </div>
 
-                <h3 className="font-semibold mt-4 flex items-center">
-                  <FaCheckCircle className="text-green-600 mr-2" />
-                  Eligibility Criteria:
-                </h3>
-                <ul className="list-disc list-inside mt-2 ml-12">
-                  <li className="hover:opacity-50 transition-opacity duration-300">Candidates who have passed intermediate with 50% marks in (Physics + Chemistry + Maths/Bio).</li>
-                </ul>
+  {/* Eligibility Criteria */}
+  <h3 className="font-semibold mt-4 flex items-center text-base lg:text-lg">
+    <FaCheckCircle className="text-green-600 mr-2" />
+    Eligibility Criteria:
+  </h3>
+  <ul className="list-disc list-inside mt-2 ml-6 text-sm lg:text-base">
+    <li className="hover:opacity-50 transition-opacity duration-300">
+      Candidates who have passed intermediate with 50% marks in (Physics + Chemistry + Maths/Bio).
+    </li>
+  </ul>
 
-                <h3 className="font-semibold mt-4 flex items-center">
-                  <FaClipboardList className="text-blue-600 mr-2" />
-                  Admission Process:
-                </h3>
-                <ul className="list-disc list-inside mt-2 ml-12">
-                  <li className="hover:opacity-50 transition-opacity duration-300">Admission is done through an Entrance test conducted by the Board of Technical Education.</li>
-                  <li className="hover:opacity-50 transition-opacity duration-300">Direct management quota.</li>
-                  <li className="hover:opacity-50 transition-opacity duration-300">For obtaining prospectus and application form, contact at the college campus.</li>
-                </ul>
+  {/* Admission Process */}
+  <h3 className="font-semibold mt-4 flex items-center text-base lg:text-lg">
+    <FaClipboardList className="text-blue-600 mr-2" />
+    Admission Process:
+  </h3>
+  <ul className="list-disc list-inside mt-2 ml-6 text-sm lg:text-base">
+    <li className="hover:opacity-50 transition-opacity duration-300">
+      Admission is done through an Entrance test conducted by the Board of Technical Education.
+    </li>
+    <li className="hover:opacity-50 transition-opacity duration-300">
+      Direct management quota.
+    </li>
+    <li className="hover:opacity-50 transition-opacity duration-300">
+      For obtaining prospectus and application form, contact at the college campus.
+    </li>
+  </ul>
 
-                <h3 className="font-semibold mt-4 flex items-center">
-                  <FaPhone className="text-yellow-600 mr-2" />
-                  Contact Details for Admission:
-                </h3>
-                <ul className="list-disc list-inside ml-12 mt-2">
-                  <li className="hover:opacity-50 transition-opacity duration-300">07409036444</li>
-                  <li className="hover:opacity-50 transition-opacity duration-300">09058781736</li>
-                  <li className="hover:opacity-50 transition-opacity duration-300">07351220007</li>
-                </ul>
-              </div>
+  {/* Contact Details */}
+  <h3 className="font-semibold mt-4 flex items-center text-base lg:text-lg">
+    <FaPhone className="text-yellow-600 mr-2" />
+    Contact Details for Admission:
+  </h3>
+  <ul className="list-disc list-inside ml-6 mt-2 text-sm lg:text-base">
+    <li className="hover:opacity-50 transition-opacity duration-300">07409036444</li>
+    <li className="hover:opacity-50 transition-opacity duration-300">09058781736</li>
+    <li className="hover:opacity-50 transition-opacity duration-300">07351220007</li>
+  </ul>
+</div>
+
             </div>
           </div>
 

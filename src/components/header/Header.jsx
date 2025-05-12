@@ -10,7 +10,7 @@ const Header = () => {
     <>
       <header className="flex items-center justify-between h-auto p-2 shadow-md flex-wrap">
         {/* Left Side: Image */}
-        <div className="flex-shrink-0 h-16 w-16 md:h-24 md:w-24">
+        <div className="flex-shrink-0 h-12 w-12 md:h-24 md:w-24">
           <img
             src={logo1} // Replace with your image URL
             alt="Institute Logo"
@@ -20,7 +20,7 @@ const Header = () => {
 
         {/* Center: Title */}
         <div className="flex-1 text-center  md:text-left">
-          <h1 className="text-sm md:text-3xl lg:text-5xl px-3 font-bold text-[#395183]">
+          <h1 className="text-[0.678rem] md:text-3xl lg:text-5xl px-3 font-bold text-[#395183]">
             <a href="/">JK Institute Of Pharmacy </a>
           </h1>
         </div>
@@ -31,21 +31,21 @@ const Header = () => {
             <img
               src={logo2} // Replace with your logo URL
               alt="Aicte"
-              className="h-16 w-16 md:h-20 md:w-20 object-cover my-2"
+              className="h-12 w-12 md:h-20 md:w-20 object-cover my-2"
             />
           </a>
           <a href="https://pci.nic.in/" target="_blank" rel="noopener noreferrer">
             <img
               src={logo4} // Replace with your logo URL
               alt="Pharmacy Council of India"
-              className="h-16 w-16 md:h-20 md:w-20 object-cover my-2"
+              className="h-12 w-12 md:h-20 md:w-20 object-cover my-2"
             />
           </a>
           <a href="https://bteup.ac.in/" target="_blank" rel="noopener noreferrer">
             <img
               src={logo3} // Replace with your logo URL
               alt="BOARD OF TECHNICAL EDUCATION"
-              className="h-16 w-16 md:h-20 md:w-20 object-cover my-2"
+              className="h-12 w-12 md:h-20 md:w-20 object-cover my-2"
             />
           </a>
         </div>

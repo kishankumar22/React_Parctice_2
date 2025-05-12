@@ -15,6 +15,7 @@ const LatestPost = () => {
     try {
       const response = await axiosInstance.get('/all-posts');
       setPosts(response.data);
+      console.log(response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
       toast.error('Error fetching posts');
@@ -34,8 +35,8 @@ const LatestPost = () => {
   return (
     <>
       {/* Header */}
-      <div className="mb-4 mt-2  mx-4 lg:mx-12  sm:mx-44 md:mx-20 bg-gray-300 h-6 flex items-center justify-center shadow-md">
-  <h1 className="text-[1rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
+      <div className="mb-4 mt-2 mx-8 lg:mx-12  sm:mx-44 md:mx-6 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+  <h1 className="text-[0.8rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
     Latest post
   </h1>
 </div>

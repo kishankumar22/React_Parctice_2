@@ -13,6 +13,7 @@ const NotificationList = () => {
       try {
         const response = await axiosInstance.get('/notifications/all-notification');
         setNotifications(response.data);
+        console.log(response.data)
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }

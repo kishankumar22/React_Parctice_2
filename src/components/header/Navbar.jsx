@@ -37,8 +37,8 @@ const Navbar = () => {
           {menuItems.map((item, index) => (
             <li
               key={index}
-              className={`p-2 hover:text-blue-300 hover: transition-all duration-200 ${
-                location.pathname === item.route ? "text-blue-500" : ""
+              className={`p-2 hover:text-blue-500  hover:transition-all duration-300 ${
+                location.pathname === item.route ? "text-sky-500" : ""
               }`}
             >
               {item.external ? (
