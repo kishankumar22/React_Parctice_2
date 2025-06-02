@@ -44,6 +44,7 @@ const LogoSlider = () => {
                 src={link.LOGOUrl} // Assuming each link object has a 'logoUrl' property
                 alt={`Logo ${index + 1}`}
                 className="h-24 w-full bg-white object-contain p-2"
+                title={link.logoName}
               />
             </a>
           ))}

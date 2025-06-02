@@ -78,7 +78,7 @@ const Slider = () => {
               alt={banner.bannerName}
               className="w-full  max-h-[650px] object-fill"
             />
-            <div className="bg-gray-transparent w-44 text-center -mt-36 ml-12 p-3 shadow-md relative">
+            <div className="bg-gray-transparent w-60 text-center -mt-24 ml-12 p-3 shadow-md absolute">
               <p className="text-white text-sm md:text-lg">{banner.bannerName}</p>
             </div>
           </div>

@@ -7,13 +7,13 @@ const NotificationCircular = () => {
   const [isScrolling, setIsScrolling] = useState(true);
   const [notifications, setNotifications] = useState([]);
   const scrollRef = useRef(null);
-  const scrollSpeed = 1; // Adjust this value for faster/slower scrolling
+  const scrollSpeed = 1;
 
   useEffect(() => {
     const fetchNotifications = async () => {
       try {
         const response = await axiosInstance.get('/notifications/all-notification');
-        setNotifications([...response.data, ...response.data, ...response.data]); // Duplicate array for smoother infinite scrolling
+        setNotifications([...response.data, ...response.data, ...response.data]);
       } catch (error) {
         console.error('Error fetching notifications:', error);
       }
@@ -28,8 +28,6 @@ const NotificationCircular = () => {
     const scroll = () => {
       if (isScrolling && scrollRef.current) {
         scrollRef.current.scrollTop += scrollSpeed;
-
-        // Reset to top when scrolled past the end of the list
         if (scrollRef.current.scrollTop >= scrollRef.current.scrollHeight / 2) {
           scrollRef.current.scrollTop = 0;
         }
@@ -37,18 +35,17 @@ const NotificationCircular = () => {
       animationFrameId = requestAnimationFrame(scroll);
     };
 
-    animationFrameId = requestAnimationFrame(scroll); // Start scrolling
-
-    return () => cancelAnimationFrame(animationFrameId); // Cleanup on unmount
+    animationFrameId = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(animationFrameId);
   }, [isScrolling]);
 
   const handlePause = () => setIsScrolling(false);
   const handlePlay = () => setIsScrolling(true);
 
   return (
-    <div className="bg-white h-heightsec">
+    <div className="bg-white h-heightsec flex flex-col">
       {/* Header */}
-      <div className="flex items-center h-10 w-full bg-white">
+      <div className="flex items-center h-10 w-full bg-white flex-shrink-0">
         <h2 className="text-sm p-1 sm:text-lg md:text-xl flex h-8 w-full mb-2 font-bold bg-blue-200">
           Notices & Circulars
         </h2>
@@ -57,10 +54,10 @@ const NotificationCircular = () => {
 
       {/* Notification Slider */}
       <div
-        className="relative h-96 overflow-hidden"
+        className="relative flex-1 overflow-y-auto"
         ref={scrollRef}
-        onMouseEnter={handlePause} // Pause scrolling on hover
-        onMouseLeave={handlePlay} // Resume scrolling when hover ends
+        onMouseEnter={handlePause}
+        onMouseLeave={handlePlay}
       >
         <div>
           {notifications.map((notification) => (
@@ -96,7 +93,7 @@ const NotificationCircular = () => {
       </div>
 
       {/* Controls */}
-      <div className="bg-blue-900 p-2 flex justify-between items-center">
+      <div className="bg-blue-900 p-2 flex justify-between items-center flex-shrink-0">
         <button className="text-white border-2 border-white text-xs sm:text-sm py-1 px-2 sm:px-4 shadow-md hover:bg-blue-200 hover:border-blue-200 hover:text-black">
           <Link to="/notificationlist">View All Notices / Circulars</Link>
         </button>

@@ -14,7 +14,7 @@ const Courses = () => {
     Courses
   </h1>
 </div>
-            <h2 className="text-sm mt-12 font-semibold">D. PHARMACY (50 Seats)</h2>
+            <h2 className="text-sm mt-12 font-semibold">D. PHARMACY (60 Seats)</h2>
             <p className="mt-2 text-gray-700">
               Here you can find detailed information about the D. Pharmacy program, including curriculum, admission requirements, and more.
             </p>

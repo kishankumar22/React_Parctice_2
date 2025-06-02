@@ -15,7 +15,7 @@ const LatestPost = () => {
     try {
       const response = await axiosInstance.get('/all-posts');
       setPosts(response.data);
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.error('Error fetching posts:', error);
       toast.error('Error fetching posts');
@@ -34,18 +34,19 @@ const LatestPost = () => {
 
   return (
     <>
+    <div className="h-96">
       {/* Header */}
-      <div className="mb-4 mt-2 mx-8 lg:mx-12  sm:mx-44 md:mx-6 bg-gray-300 h-6 flex items-center justify-center shadow-md">
+      <div className="mb-4 mt-2 mx-8 sm:mx-44 md:mx-6 bg-gray-300 h-6 flex items-center justify-center shadow-md">
   <h1 className="text-[0.8rem]  sm:text-xs md:text-sm lg:text-[1.125rem] text-center font-sans font-medium uppercase text-white bg-blue-900 rounded-md p-2 shadow-lg">
     Latest post
   </h1>
 </div>
 
       {/* Marquee Container */}
-      <div className="relative overflow-hidden  text-justify h-96">
+      <div className="relative overflow-hidden  h-72 text-justify">
         <div
           ref={marqueeRef}
-          className="absolute inset-0 flex flex-col animate-marquee"
+          className="absolute inset-0  h-64 flex flex-col animate-marquee"
           onMouseEnter={() => {
             marqueeRef.current.style.animationPlayState = "paused";
             setHovering(true);
@@ -60,7 +61,7 @@ const LatestPost = () => {
           {posts.filter(post => post.isVisible).map((post) => ( // Filter for visible posts
             <div
               key={post.post_id} // Use post_id as the key
-              className="p-2 mx-2 text-justify bg-white transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
+              className="p-2 mx-4 text-justify bg-white transition-all duration-300 transform hover:scale-105 hover:border-b-2 hover:text-blue-600 cursor-pointer"
             >
               <Link to={`/post/${post.post_slug}`}>{post.post_title}</Link>
             </div>
@@ -68,7 +69,7 @@ const LatestPost = () => {
         </div>
       </div>
 
-    
+    </div>
     </>
   );
 };

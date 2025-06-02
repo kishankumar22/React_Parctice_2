@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../layout/Layout';
 import { FaPhone, FaClipboardList, FaCheckCircle } from 'react-icons/fa'; // Importing icons
 import logo1 from "../../assets/logo/logo.jpg"; // Replace with your logo
-import logo2 from "../../assets/logo/aicte-logo.jpg"; // Replace with your logo
+
 import logo3 from "../../assets/logo/bte up.jpg"; // Replace with your logo
 import logo4 from "../../assets/logo/pci logo.jpg";
 import LatestPost from '../academics/LatestPost';
@@ -20,29 +20,41 @@ const AdmissionProcess = () => {
               </h1>
               </div>
             <div className=" mt-4">
-              <h2 className="font-semibold text-2xl text-red-600">Approval of College:</h2>
-              <ul className="list-disc list-inside mt-2 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <li className="flex  flex-col items-center mb-2 hover:opacity-50 transition-opacity duration-300">
-                  <img src={logo4} alt="PCI Logo" className="h-20 w-20 mr-2" />
-                  <p className='text-sm mt-2'><b>1. </b>PCI (Pharmacy Council of India)</p>
-                </li>
-                <li className="flex flex-col  items-center mb-2 hover:opacity-50 transition-opacity duration-300">
-                  <img src={logo2} alt="AICTE Logo" className="h-20 w-20mr-2" />
-                 <p className='text-sm mt-2 text-center '><b>2. </b> AICTE (All India Council of Technical Education)</p>
-                </li>
-                <li className="flex  flex-col items-center mb-2 hover:opacity-50 transition-opacity duration-300">
-                 <img src={logo3} alt="BTE Logo" className="h-20 w-20 mr-2" />
-                  <p className='text-sm mt-2'> <b>3. </b> B.T.E (Board of Technical Education)</p>                 
-                </li>
-              </ul>
-              <div className="mt-4 border-y-2 p-2">
-                <p className="font-bold text-2xl text-center text-red-600">College Code: <span className="font-normal">680</span></p>
-              </div>
+             <div>
+  <h2 className="font-semibold text-2xl text-red-600">Approval of College:</h2>
+  <ul className="list-inside mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+    {/* PCI */}
+    <li className="flex flex-col items-center mb-4 hover:opacity-80 transition-opacity duration-300">
+      <img src={logo4} alt="PCI Logo" className="h-20 w-20" />
+      <p className="text-sm mt-3 text-center">
+        <b>1.</b> PCI (Pharmacy Council of India)
+      </p>
+      <p className="mt-1 text-center text-base font-medium text-gray-700">
+        <span className="text-blue-800 font-semibold">College Code:</span> 3134
+      </p>
+    </li>
+
+    {/* BTE */}
+    <li className="flex flex-col items-center mb-4 hover:opacity-80 transition-opacity duration-300">
+      <img src={logo3} alt="BTE Logo" className="h-20 w-20" />
+      <p className="text-sm mt-3 text-center">
+        <b>2.</b> B.T.E (Board of Technical Education)
+      </p>
+      <p className="mt-1 text-center text-base font-medium text-gray-700">
+        <span className="text-blue-800 font-semibold">College Code:</span> 1680
+      </p>
+    </li>
+
+  </ul>
+</div>
+
+              
               <div className="mt-4 px-2 sm:px-2">
-  {/* Course Offered */}
-  <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 mb-4">
-    <span className="text-lg lg:text-xl font-bold text-red-600 whitespace-nowrap">Course Offered:</span>
-    <span className="text-lg lg:text-xl font-bold text-blue-800 ml-0 lg:ml-2">Diploma in Pharmacy</span>
+                      {/* Course Offered */}
+                     <div className="flex flex-col lg:flex-row lg:items-center lg:gap-2 mb-4">
+                  <span className="text-lg lg:text-xl font-bold text-red-600 whitespace-nowrap">Course Offered:</span>
+                   <span className="text-lg lg:text-xl font-bold text-blue-800 ml-0 lg:ml-2">Diploma in Pharmacy</span>
   </div>
 
   {/* Eligibility Criteria */}

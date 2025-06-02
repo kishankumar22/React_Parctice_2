@@ -19,7 +19,7 @@ const Principal = () => {
 </div>
               <img src={pic1} className='mx-auto rounded-lg shadow-lg h-80 ' alt="Chairman" />
               <p className='text-xs md:text-sm font-roboto p-4 text-gray-800 leading-relaxed'>
-                J K Institute of Pharmacy is the Lush Green campus located at Bulandshahr-Khurja NH 91. The college started working in 2017 with the generosity of Shri J K Singh, a visionary and a legend. The Institute is approved by All India Council for Technical Education (AICTE), the Pharmacy Council of India (PCI), New Delhi, and the Board of Technical Education, Govt. of Uttar Pradesh. The institute has state-of-the-art infrastructure and instrumental facilities and provides a serene atmosphere for academic excellence. The institute houses a voluminous library, classrooms with multimedia facilities, well-equipped laboratories, modern Computer and Language labs, canteens, playground, auditorium, and seminar halls.
+                J K Institute of Pharmacy is the Lush Green campus located at Bulandshahr-Khurja NH 91. New Delhi, and the Board of Technical Education, Govt. of Uttar Pradesh. The institute has state-of-the-art infrastructure and instrumental facilities and provides a serene atmosphere for academic excellence. The institute houses a voluminous library, classrooms with multimedia facilities, well-equipped laboratories, modern Computer and Language labs, canteens, playground, auditorium, and seminar halls.
               </p>
             </div>
             {/* Right Column (col-4) */}

@@ -15,7 +15,7 @@ export const theme = {
       'heightsec': '477px',
     },
     animation: {
-      marquee: "marquee 25s linear infinite",
+      marquee: "marquee 18s linear infinite",
     },
     fontFamily: {
       roboto: ['Roboto', 'sans-serif'], 

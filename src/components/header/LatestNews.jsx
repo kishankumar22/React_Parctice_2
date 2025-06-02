@@ -92,7 +92,7 @@ const LatestNews = () => {
     </a>
   </li>
   <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-    <a href="https://www.twitter.com" target="_blank" rel="noopener noreferrer">
+    <a href="https://www.in.com" target="_blank" rel="noopener noreferrer">
       <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
         <FaTwitter size={20} />
       </div>
@@ -101,26 +101,17 @@ const LatestNews = () => {
       </div>
     </a>
   </li>
-  <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-    <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
-      <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
-        <FaYoutube size={20} />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
-        <FaYoutube size={20} />
-      </div>
-    </a>
-  </li>
-  <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
-    <a href="https://plus.google.com" target="_blank" rel="noopener noreferrer">
-      <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
-        <FaGooglePlusG size={20} />
-      </div>
-      <div className="absolute inset-0 flex items-center justify-center bg-blue-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
-        <FaGooglePlusG size={20} />
-      </div>
-    </a>
-  </li>
+<li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
+  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+    <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">
+      <FaInstagram size={20} />
+    </div>
+    <div className="absolute inset-0 flex items-center justify-center bg-pink-600 text-white transition-transform duration-500 group-hover:translate-y-0 -translate-y-full">
+      <FaInstagram size={20} />
+    </div>
+  </a>
+</li>
+ 
   <li className="relative w-8 h-8 overflow-hidden group border border-gray-200">
     <a href="https://www.pinterest.com" target="_blank" rel="noopener noreferrer">
       <div className="absolute inset-0 flex items-center justify-center bg-white text-black group-hover:translate-y-full transition-transform duration-500">

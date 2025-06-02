@@ -14,7 +14,7 @@ const WhyUs = () => {
       <div className='p-2  border border-gray-200 shadow-xl '>
         <div className=' w-full'><img src={whyus} alt="" className='w-full h-64' /></div>
         <div>
-          <p className="text-lg font-bold mt-3 text-gray-800">
+          <p className="text-lg lg:text font-bold mt-2 text-gray-800">
             J K Institute of Pharmacy: A Lush Green Campus in Bulandshahr
           </p>
           <p className="text-base font-normal text-gray-600">
