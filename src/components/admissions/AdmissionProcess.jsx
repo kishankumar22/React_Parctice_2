@@ -1,9 +1,7 @@
-import React from 'react';
+
 import Layout from '../layout/Layout';
 import { FaPhone, FaClipboardList, FaCheckCircle } from 'react-icons/fa'; // Importing icons
-import logo1 from "../../assets/logo/logo.jpg"; // Replace with your logo
-
-import logo3 from "../../assets/logo/bte up.jpg"; // Replace with your logo
+import logo3 from "../../assets/logo/schloar.jpg"; // Replace with your logo
 import logo4 from "../../assets/logo/pci logo.jpg";
 import LatestPost from '../academics/LatestPost';
 
@@ -26,7 +24,7 @@ const AdmissionProcess = () => {
     
     {/* PCI */}
     <li className="flex flex-col items-center mb-4 hover:opacity-80 transition-opacity duration-300">
-      <img src={logo4} alt="PCI Logo" className="h-20 w-20" />
+      <img src={logo4} alt="PCI Logo" className="h-28 w-28 object-fit" />
       <p className="text-sm mt-3 text-center">
         <b>1.</b> PCI (Pharmacy Council of India)
       </p>
@@ -36,8 +34,8 @@ const AdmissionProcess = () => {
     </li>
 
     {/* BTE */}
-    <li className="flex flex-col items-center mb-4 hover:opacity-80 transition-opacity duration-300">
-      <img src={logo3} alt="BTE Logo" className="h-20 w-20" />
+    <li className="flex flex-col  items-center mb-4 hover:opacity-80 transition-opacity duration-300">
+      <img src={logo3} alt="BTE Logo" className="h-28 w-28 object-fit" />
       <p className="text-sm mt-3 text-center">
         <b>2.</b> B.T.E (Board of Technical Education)
       </p>

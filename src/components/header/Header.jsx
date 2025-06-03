@@ -1,5 +1,5 @@
 import logo1 from "../../assets/logo/logo.jpg"; // Replace with your logo
-import logo3 from "../../assets/logo/bte up.jpg"; // Replace with your logo
+import logo3 from "../../assets/logo/schloar.jpg"; // Replace with your logo
 import logo4 from "../../assets/logo/pci logo.jpg"; // Replace with your logo
 
 const Header = () => {
@@ -21,7 +21,7 @@ const Header = () => {
 
         {/* Center: Title */}
         <div className="flex-1 text-center  md:text-left">
-          <h1 className="text-[0.911rem]  md:text-3xl lg:text-5xl px-3 font-bold text-[#395183]">
+          <h1 className="text-[0.921rem]  md:text-3xl lg:text-5xl px-3 font-bold text-[#395183]">
             <a href="/">JK Institute Of Pharmacy </a>
           </h1>
         </div>
@@ -37,6 +37,7 @@ const Header = () => {
               src={logo4} // Replace with your logo URL
               alt="Pharmacy Council of India"
               className="h-12 w-12 md:h-20 md:w-20 object-cover my-2"
+              title="Pharmacy Council of India"
             />
           </a>
           <a
@@ -48,6 +49,7 @@ const Header = () => {
               src={logo3} // Replace with your logo URL
               alt="BOARD OF TECHNICAL EDUCATION"
               className="h-12 w-12 md:h-20 md:w-20 object-cover my-2"
+              title="BOARD OF TECHNICAL EDUCATION"
             />
           </a>
         </div>
