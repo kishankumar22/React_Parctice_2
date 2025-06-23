@@ -54,12 +54,12 @@ const Faculty = () => {
                           <img
                             src={faculty.profilePicUrl || 'https://static.vecteezy.com/system/resources/previews/024/983/914/non_2x/simple-user-default-icon-free-png.png'}
                             alt={faculty.faculty_name}
-                            className="w-12 h-12 md:w-12 md:h-12 object-cover rounded-full"
+                            className="w-16 h-16 md:w-24 md:h-24 object-contain rounded-full"
                           />
                         </td>
-                        <td className="py-1 px-2 md:px-3 text-xs capitalize">{faculty.faculty_name}</td>
+                        <td className="py-1 px-2 md:px-3 text-sm capitalize ">{faculty.faculty_name}</td>
                         <td className="py-1 px-2 md:px-3 text-xs uppercase">{faculty.qualification}</td>
-                        <td className="py-1 px-2 md:px-3 text-xs uppercase">{faculty.designation}</td>
+                        <td className="py-1 px-2 md:px-3 text-xs font-bold text-black uppercase">{faculty.designation}</td>
                       </tr>
                     ))}
                   </tbody>
