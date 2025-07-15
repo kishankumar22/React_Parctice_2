@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import axiosInstance from '../../config';
 import Layout from '../layout/Layout';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Placement = () => {
   const [placements, setPlacements] = useState([]);
-  const [filteredPlacements, setFilteredPlacements] = useState([]);
-  const [selectedYear, setSelectedYear] = useState('all');
-  const [selectedStatus, setSelectedStatus] = useState('Selected'); // Default to Selected
   const [loading, setLoading] = useState(true);
-
+  const [activeYear, setActiveYear] = useState(null);
 
   useEffect(() => {
-    // Fetch placement data from API
     axiosInstance.get('/placements')
       .then(res => {
         const data = res.data.recordset || [];
-        setPlacements(data);
-        setFilteredPlacements(data);
+        const selectedStudents = data.filter(p => p.Status === 'Selected');
+        setPlacements(selectedStudents);
+        // Set the most recent year with data as active (e.g., 2026 if available)
+        const years = [...new Set(selectedStudents.map(p => p.PlacementYear))].sort((a, b) => b - a);
+        if (years.length > 0) setActiveYear(years[0]);
         setLoading(false);
       })
       .catch(err => {
@@ -25,219 +25,128 @@ const Placement = () => {
       });
   }, []);
 
-  // Extract unique years for filter dropdown
-  const availableYears = [...new Set(placements.map(p => p.PlacementYear))].sort((a, b) => b - a);
-  
-  // Extract unique statuses for filter dropdown
-  const availableStatuses = [...new Set(placements.map(p => p.Status))].filter(Boolean);
-
-  // Filter placements based on selected year and status
-  useEffect(() => {
-    let filtered = placements;
-    
-    // Apply year filter
-    if (selectedYear !== 'all') {
-      filtered = filtered.filter(p => p.PlacementYear === parseInt(selectedYear));
-    }
-    
-    // Apply status filter
-    if (selectedStatus !== 'all') {
-      filtered = filtered.filter(p => p.Status === selectedStatus);
-    }
-    
-    setFilteredPlacements(filtered);
-  }, [selectedYear, selectedStatus, placements]);
-
-  // Handle image URL generation with proper fallback
-  const getImageUrl = (url) => {
-    if (!url) return '/default-profile.png';
-    if (url.startsWith('http') || url.startsWith('https')) return url;
-    return `${axiosInstance.defaults.baseURL}${url}`;
-  };
-
-  // Handle year filter change
-  const handleYearChange = (event) => {
-    setSelectedYear(event.target.value);
-  };
-
-  // Handle status filter change
-  const handleStatusChange = (event) => {
-    setSelectedStatus(event.target.value);
-  };
-
-  // Handle student card click to show modal
-  const handleStudentClick = (student) => {
-    setSelectedStudent(student);
-    setShowModal(true);
-  };
-
-  // Close modal
-  const closeModal = () => {
-    setShowModal(false);
-    setSelectedStudent(null);
-  };
-
-  // Handle modal backdrop click
-
+  const getImageUrl = (url) => url ? url.startsWith('http') ? url : `${axiosInstance.defaults.baseURL}${url}` : '/default-profile.png';
 
   if (loading) {
     return (
       <Layout>
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          <motion.div
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+            className="h-10 w-10 border-4 border-indigo-600 border-t-transparent rounded-full"
+          />
         </div>
       </Layout>
     );
   }
 
+  // Get unique years from data, limited to the last 5 years (2026, 2025, 2024, 2023, 2022)
+  const availableYears = [...new Set(placements.map(p => p.PlacementYear))].sort((a, b) => b - a);
+  const displayYears = availableYears.filter(year => [2026, 2025, 2024, 2023, 2022].includes(year));
+
+  const filteredPlacements = activeYear ? placements.filter(p => p.PlacementYear === activeYear) : [];
+
   return (
     <Layout>
-      <div className="bg-gray-50  py-6">
-        <div className="mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header Section */}
-          <div className="text-center mb-8">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
-              PLACEMENT RECORDS
-            </h1>
-            <p className="text-lg text-gray-600">
-              Placement 100% Placement Assessment
-            </p>
-          </div>
+      <div className="container mx-auto px-4 py-8 bg-gray-50 min-h-screen">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-8"
+        >
+        <h1 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-800 to-purple-600">
+            Selected Students
+          </h1>
+          <p className="text-gray-600 text-md mt-1">
+            🎉 100% Placement Success in {activeYear} | Join Our Success Stories!
+          </p>
+        </motion.div>
 
-          {/* Filter Section */}
-          <div className="mb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="flex flex-col sm:flex-row items-center gap-4">
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-700">Filter by Year:</span>
-                <select
-                  value={selectedYear}
-                  onChange={handleYearChange}
-                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                >
-                  <option value="all">All Years</option>
-                  {availableYears.map(year => (
-                    <option key={year} value={year}>{year}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <span className="text-sm font-medium text-gray-700">Filter by Status:</span>
-                <select
-                  value={selectedStatus}
-                  onChange={handleStatusChange}
-                  className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm"
-                >
-                  <option value="all">All Status</option>
-                  <option value="Selected">Selected</option>
-                  <option value="Joined">Joined</option>
-                  {availableStatuses.filter(status => !['Selected', 'Joined'].includes(status)).map(status => (
-                    <option key={status} value={status}>{status}</option>
-                  ))}
-                </select>
-              </div>
-            </div>
-            <div className="text-sm text-gray-500">
-              Showing {filteredPlacements.length} of {placements.length} records
-            </div>
-          </div>
-
-          {/* Placement Cards Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-6">
-            {filteredPlacements.map((placement) => (
-              <div
-                key={placement.PlacementId}
-                className={`bg-white rounded-xl shadow-sm border overflow-hidden hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer ${
-                  placement.Status === 'Joined' 
-                    ? 'border-green-300 hover:border-green-400 ring-1 ring-green-100' 
-                    : 'border-gray-200 hover:border-blue-300'
-                }`}
-                onClick={() => handleStudentClick(placement)}
+        {/* Year Tabs */}
+        {displayYears.length > 0 && (
+          <div className="flex justify-center gap-4 mb-8 flex-wrap">
+            {displayYears.map(year => (
+              <motion.button
+                key={year}
+                onClick={() => setActiveYear(year)}
+                className={`px-4 py-2 rounded-full text-sm font-medium ${activeYear === year ? 'bg-indigo-600 text-white' : 'bg-gray-200 text-gray-700'} hover:bg-indigo-500 hover:text-white transition-colors`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                {/* Student Photo */}
-                <div className="p-4 pb-3">
-                  <div className="relative mx-auto w-40 h-40 mb-3">
-                    <img
-                      src={getImageUrl(placement.studentimage)}
-                      alt={`${placement.fName} ${placement.lName}`}
-                      className="w-full h-full  object-cover border-2 border-gray-200"
-                      onError={(e) => {
-                        e.target.src = '/default-profile.png';
-                      }}
-                    />
-                    <div className={`absolute -bottom-1 -right-1 w-4 h-4 rounded-full border-2 border-white ${
-                      placement.Status === 'Joined' ? 'bg-green-500' : 'bg-blue-500'
-                    }`}></div>
-                  </div>
-                  
-                  {/* Student Name */}
-                  <div className="text-center">
-                    <h3 className="font-semibold text-gray-900 text-sm mb-1 leading-tight">
-                      {placement.fName} {placement.lName}
-                    </h3>
-                    <p className="text-blue-600 text-xs font-medium truncate">
-                      {placement.CompanyName}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Hover Effect Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
+                {year}
+              </motion.button>
             ))}
           </div>
+        )}
 
-          {/* Empty State */}
-          {filteredPlacements.length === 0 && (
-            <div className="text-center py-12">
-              <div className="text-gray-400 text-lg mb-2">No placement records found</div>
-              <div className="text-gray-500 text-sm">
-                {selectedYear !== 'all' 
-                  ? `No records found for year ${selectedYear}` 
-                  : 'No placement data available'}
-              </div>
-            </div>
+        {/* Placements Grid */}
+        <AnimatePresence>
+          {filteredPlacements.length > 0 ? (
+            <motion.div
+              className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+            >
+              {filteredPlacements.map(placement => (
+                <PlacementCard 
+                  key={placement.PlacementId}
+                  placement={placement}
+                  getImageUrl={getImageUrl}
+                />
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="text-center py-12 bg-white rounded-xl shadow-md"
+            >
+              <p className="text-gray-600 text-sm">No selected students available for {activeYear || 'this year'}</p>
+            </motion.div>
           )}
-
-          {/* Stats Footer */}
-          {filteredPlacements.length > 0 && (
-            <div className="mt-8 bg-white rounded-xl shadow-sm border border-gray-200 p-4">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <div>
-                  <div className="text-2xl font-bold text-blue-600">
-                    {filteredPlacements.length}
-                  </div>
-                  <div className="text-sm text-gray-500">Total Placements</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-green-600">
-                    {filteredPlacements.filter(p => p.Status === 'Joined').length}
-                  </div>
-                  <div className="text-sm text-gray-500">Joined</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-blue-600">
-                    {filteredPlacements.filter(p => p.Status === 'Selected').length}
-                  </div>
-                  <div className="text-sm text-gray-500">Selected</div>
-                </div>
-                <div>
-                  <div className="text-2xl font-bold text-purple-600">
-                    {filteredPlacements.length > 0 
-                      ? (filteredPlacements.reduce((sum, p) => sum + (p.PackageOffered || 0), 0) / filteredPlacements.length).toFixed(1)
-                      : '0'
-                    }
-                  </div>
-                  <div className="text-sm text-gray-500">Avg Package (LPA)</div>
-                </div>
-              </div>
-            </div>
-          )}
-
-       
-        </div>
+        </AnimatePresence>
       </div>
     </Layout>
+  );
+};
+
+const PlacementCard = ({ placement, getImageUrl }) => {
+  const packageValue = placement.PackageOffered || 0;
+
+  const getBorderColor = () => {
+    if (packageValue >= 6) return 'border-yellow-400';    // Gold for 6+ LPA
+    if (packageValue >= 3) return 'border-blue-500';      // Blue for 3-5 LPA
+    return 'border-green-500';                            // Green for 1-2 LPA
+  };
+
+  return (
+    <motion.div
+      whileHover={{ scale: 1.05 }}
+      className={`bg-white rounded-xl overflow-hidden shadow-md border-2 ${getBorderColor()} transition`}
+    >
+      <div className="flex justify-center p-4">
+        <img
+          src={getImageUrl(placement.studentimage)}
+          alt={`${placement.fName} ${placement.lName}`}
+          className="h-60 w-60 object-cover rounded-full border-2 border-gray-200"
+          onError={(e) => e.target.src = '/default-profile.png'}
+        />
+      </div>
+
+      <div className="px-4 pb-4 text-center">
+        <div className="font-bold text-gray-800 text-md flex justify-center items-center gap-2">
+          <span>{placement.fName} {placement.lName}</span>
+          <span className="text-indigo-600 text-sm font-medium">| {packageValue} LPA</span>
+        </div>
+
+        <span className="inline-block mt-2 bg-indigo-100 text-indigo-600 text-xs font-medium px-3 py-1 rounded-full">
+          {placement.CompanyName}
+        </span>
+      </div>
+    </motion.div>
   );
 };
 

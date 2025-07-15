@@ -41,7 +41,7 @@ const ProfileSection = () => {
         <div key={faculty.id} className='flex flex-col items-center w-full pt-1 border-2  border-gray-200'>
           <img className='h-32 w-32  rounded-full object-cover' src={faculty.profilePicUrl} alt={faculty.faculty_name} />
           <h1 className='text-blue-700 font-semibold text-md'>{faculty.faculty_name}</h1>
-          <p className='font-normal m-1 text-xs'>{faculty.qualification}</p>
+          <p className='font-normal m-1 text-xs'>{faculty.designation}</p>
           <p className='font- text-xs text-center mb-2'>JK Institute Of Pharmacy</p>
         </div>
       ))}
